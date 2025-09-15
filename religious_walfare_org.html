@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>সামাজিক ও সাংস্কৃতিক প্রতিষ্ঠান — কর্ণফুলী</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+    }
+    .section-title {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.5rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      height: 4px;
+      width: 80px;
+      background-color: #f59e0b; /* amber-500 */
+      border-radius: 999px;
+    }
+    .card {
+      background-color: #ffffff;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 1rem;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    }
+    .contact-link {
+        transition: color 0.3s ease;
+    }
+    .contact-link:hover {
+        color: #f59e0b; /* amber-500 */
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-slate-800 min-h-screen flex flex-col">
+  
+  <header class="bg-gradient-to-r from-blue-900 to-indigo-900 text-white shadow-xl sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
+      <h1 class="text-2xl font-bold flex items-center gap-2">🤝 সামাজিক ও সাংস্কৃতিক প্রতিষ্ঠান</h1>
+      <nav class="mt-4 sm:mt-0">
+        <a href="#" class="text-sm underline hover:text-yellow-300">⬅ হোমে ফিরুন</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-10">
+
+    <section id="social-institutions" class="mb-12 pt-10">
+      <h2 class="text-3xl font-bold text-center section-title">গুরুত্বপূর্ণ প্রতিষ্ঠানসমূহ</h2>
+      <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">এই পেজে কর্ণফুলী উপজেলার বিভিন্ন সামাজিক, ধর্মীয়, ও সাংস্কৃতিক প্রতিষ্ঠানের বিস্তারিত তথ্য খুঁজে নিন।</p>
+      
+      <div id="institution-grid" class="grid lg:grid-cols-2 gap-8">
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-900 text-white py-6 text-center mt-auto">
+    <p class="text-sm">&copy; ২০২৫ কর্ণফুলী লোকাল ডিরেক্টরি — সকল অধিকার সংরক্ষিত</p>
+  </footer>
+
+  <script>
+    // Sample data for institutions
+    const institutions = [
+      { 
+        id: 1, 
+        name: 'কর্ণফুলী কেন্দ্রীয় জামে মসজিদ', 
+        type: 'ধর্মীয় প্রতিষ্ঠান', 
+        address: 'চরপাথরঘাটা, কর্ণফুলী', 
+        contact: '+8801711-111111', 
+        description: 'কর্ণফুলী উপজেলার সবচেয়ে বড় এবং প্রধান জামে মসজিদ এটি। নিয়মিত ধর্মীয় কার্যক্রম ও সামাজিক অনুষ্ঠানে এটি এলাকার মুসলিম সম্প্রদায়ের কেন্দ্র হিসেবে কাজ করে। এই মসজিদটি তার আধুনিক স্থাপত্যশৈলী এবং শান্ত পরিবেশের জন্য সুপরিচিত।',
+        image: 'https://images.unsplash.com/photo-1598270514109-1a76f625902e?q=80&w=1770&auto=format&fit=crop'
+      },
+      { 
+        id: 2, 
+        name: 'শিকলবাহা যুব উন্নয়ন ক্লাব', 
+        type: 'সামাজিক সংগঠন', 
+        address: 'কলেজ রোড, শিকলবাহা', 
+        contact: '+8801919-222222', 
+        description: 'শিকলবাহা যুব উন্নয়ন ক্লাব এলাকার তরুণদের দক্ষতা বৃদ্ধি, খেলাধুলা ও সামাজিক সচেতনতা বাড়াতে কাজ করে। তারা নিয়মিত বিভিন্ন কর্মশালা, রক্তদান কর্মসূচি এবং ক্রীড়া প্রতিযোগিতার আয়োজন করে থাকে।',
+        image: 'https://images.unsplash.com/photo-1595180182436-1e6a10b42c82?q=80&w=1770&auto=format&fit=crop'
+      },
+      { 
+        id: 3, 
+        name: 'বড়উঠান লোকনাথ ব্রহ্মচারী আশ্রম', 
+        type: 'ধর্মীয় প্রতিষ্ঠান', 
+        address: 'বড়উঠান, কর্ণফুলী', 
+        contact: '+8801812-333333', 
+        description: 'এটি একটি প্রাচীন ও ঐতিহ্যবাহী আশ্রম, যা হিন্দু ধর্মাবলম্বীদের কাছে একটি গুরুত্বপূর্ণ তীর্থস্থান। এটি কেবল ধর্মীয় স্থানই নয়, বরং একটি শান্ত ও প্রকৃতির কাছাকাছি পরিবেশ উপভোগ করার জন্যও একটি চমৎকার জায়গা।',
+        image: 'https://images.unsplash.com/photo-1627063499426-3d233c7f9556?q=80&w=1770&auto=format&fit=crop'
+      },
+      { 
+        id: 4, 
+        name: 'জুলধা কমিউনিটি সেন্টার', 
+        type: 'কমিউনিটি সেন্টার', 
+        address: 'জুলধা, কর্ণফুলী', 
+        contact: '+8801618-444444', 
+        description: 'জুলধা কমিউনিটি সেন্টারটি স্থানীয় বাসিন্দাদের জন্য বিভিন্ন ধরনের সামাজিক অনুষ্ঠান, যেমন- বিয়ে, মেজবান, সভা-সমাবেশ ইত্যাদির জন্য একটি আদর্শ স্থান। এটি সুন্দর সাজসজ্জা এবং আধুনিক সুবিধা দিয়ে সজ্জিত।',
+        image: 'https://images.unsplash.com/photo-1579782539130-9b4b0e52701e?q=80&w=1974&auto=format&fit=crop'
+      },
+      { 
+        id: 5, 
+        name: 'কর্ণফুলী সাহিত্য ও সাংস্কৃতিক ফোরাম', 
+        type: 'সাংস্কৃতিক সংগঠন', 
+        address: 'চরলক্ষ্যা, কর্ণফুলী', 
+        contact: '+8801515-555555', 
+        description: 'এলাকার সাহিত্যপ্রেমী ও শিল্পানুরাগীদের মিলনস্থল এই ফোরাম। তারা নিয়মিত সাহিত্য আড্ডা, কবিতা পাঠের আসর, এবং স্থানীয় শিল্পীদের নিয়ে সাংস্কৃতিক অনুষ্ঠানের আয়োজন করে থাকে।',
+        image: 'https://images.unsplash.com/photo-1522858970425-ce6940d9c10c?q=80&w=1770&auto=format&fit=crop'
+      },
+    ];
+
+    const institutionGrid = document.getElementById('institution-grid');
+
+    function renderInstitutions() {
+      institutionGrid.innerHTML = '';
+      institutions.forEach(institution => {
+        const card = document.createElement('div');
+        card.className = 'card flex flex-col md:flex-row';
+        card.innerHTML = `
+          <div class="md:w-1/2 lg:w-2/5 p-4 flex justify-center items-center">
+            <img src="${institution.image}" alt="${institution.name}" class="rounded-lg object-cover w-full h-48 md:h-full">
+          </div>
+          <div class="p-6 md:w-1/2 lg:w-3/5">
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">${institution.name}</h3>
+            <p class="text-base text-amber-600 font-semibold mb-4">${institution.type}</p>
+            <p class="text-sm text-gray-600 mb-4">${institution.description}</p>
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-2 text-gray-700">
+                <i class="fas fa-map-marker-alt text-lg text-blue-500"></i>
+                <span class="font-medium">${institution.address}</span>
+              </div>
+              <div class="flex items-center gap-2 text-gray-700">
+                <i class="fas fa-phone-alt text-lg text-blue-500"></i>
+                <a href="tel:${institution.contact}" class="font-medium contact-link hover:text-amber-500">${institution.contact}</a>
+              </div>
+            </div>
+          </div>
+        `;
+        institutionGrid.appendChild(card);
+      });
+    }
+
+    renderInstitutions();
+  </script>
+</body>
+</html>
