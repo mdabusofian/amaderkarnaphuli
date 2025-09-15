@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title> কর্ণফুলী উপজেলা লোকাল ডিরেক্টরি — হোম</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root{--brand-1:#0ea5e9;--brand-2:#0369a1}
+    body{font-family: 'Noto Sans Bengali', 'Poppins', system-ui, sans-serif;}
+    .card-focus{box-shadow:0 10px 30px rgba(2,6,23,0.12)}
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-sky-600 to-cyan-700 text-white sticky top-0 z-50 shadow">
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between gap-4">
+      <a href="#" class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center text-xl">উ</div>
+        <div>
+          <h1 class="text-lg font-semibold"> কর্ণফুলী উপজেলা </h1>
+          <p class="text-xs opacity-90"> উপজেলার সব তথ্য এক জায়গায়</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#search" class="hover:underline">হোম</a>
+        <a href="#features" class="hover:underline">সেবা সমূহ</a>
+        <a href="upazilla_introduction.html" class="hover:underline">উপজেলা পরিচিতি</a>
+        <a href="union.html" class="hover:underline">ইউনিয়ন পরিষদ</a>
+        <a href="upazilla_Office_list.html" class="hover:underline"> উপজেলা সরকারি অফিস </a>
+        <a href="emergency_number.html" class="hover:underline"> জরুরী নাম্বার  </a>
+
+        <a href="hospitals_list.html" class="hover:underline"> হাসপাতাল ও ক্লিনিক </a>
+        <a href="notice_board.html" class="hover:underline">নোটিশ বোর্ড</a>
+        <a href="mistri_list.html" class="hover:underline"> মিস্ত্রী সেবা </a>
+        <a href="transport.html" class="hover:underline"> পরিবহন ও গাড়িভাড়া </a>
+
+        <a href="blood_donor" class="hover:underline">রক্তদাতা</a>
+        <a href="#contact" class="hover:underline">যোগাযোগ</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a class="hidden md:inline-block bg-white/20 px-3 py-1 rounded text-sm">লগইন</a>
+        <button id="mobileToggle" class="md:hidden p-2 rounded bg-white/10">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <!-- mobile menu -->
+    <div id="mobileMenu" class="md:hidden bg-sky-700/30 px-6 pb-4 hidden">
+      <div class="flex flex-col gap-2 text-white text-sm">
+        <a href="#search">🔍 সার্চ</a>
+        <a href="#features">🧭 সেবা</a>
+        <a href="#about">🏛️ উপজেলা পরিচিতি</a>
+        <a href="#dorshoniyo">🏞️ দর্শনীয় স্থান</a>
+        <a href="#notices">📢 নোটিশ</a>
+        <a href="#events">📅 ইভেন্ট</a>
+        <a href="#donors">🩸 রক্তদাতা</a>
+        <a href="#contact">📞 যোগাযোগ</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero / Search -->
+    <section id="search" class="bg-gradient-to-r from-white to-sky-50 py-12">
+      <div class="container mx-auto px-6">
+        <div class="bg-white rounded-2xl shadow-lg p-6 md:p-10 grid gap-6 md:grid-cols-2 items-center">
+          <div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-2">আপনার উপজেলার সকল তথ্য — দ্রুত খুঁজুন</h2>
+            <p class="text-slate-600 mb-4">ইউনিয়ন পরিষদ, হাসপাতাল, স্কুল, জরুরি নাম্বার, রক্তদাতা, কারিগরি সার্ভিস, বাসা ভাড়া এবং আরও অনেক কিছু একসাথে।</p>
+
+            <form id="searchForm" class="flex flex-col md:flex-row gap-3">
+              <input id="q" type="search" placeholder="নাম/কীওয়ার্ড লিখুন (উদাহরণ: হাসপাতাল, চেয়ারম্যান, রংপুর ব্রিজ)" class="flex-1 p-3 rounded-lg border" />
+              <select id="cat" class="p-3 rounded-lg border w-full md:w-48">
+                <option value="">সকল ক্যাটাগরি</option>
+                <option>ইউনিয়ন পরিষদ</option>
+                <option>জরুরী নাম্বার</option>
+                <option>হাসপাতাল</option>
+                <option>স্কুল/কলেজ</option>
+                <option>রেস্টুরেন্ট</option>
+                <option>টিউশন/টিউটার</option>
+                <option>বাসা ভাড়া</option>
+                <option>কারিগরি সার্ভিস</option>
+                <option>পরিবহন</option>
+                <option>রক্তদাতা</option>
+              </select>
+              <select id="area" class="p-3 rounded-lg border w-full md:w-56">
+                <option value="">সকল এলাকা</option>
+                <option>উপজেলা সদর</option>
+                <option>পশ্চিম ইউনিয়ন</option>
+                <option>উত্তর ইউনিয়ন</option>
+                <option>দক্ষিণ ইউনিয়ন</option>
+              </select>
+              <button type="submit" class="bg-sky-600 text-white px-5 py-3 rounded-lg hover:bg-sky-700">🔎 খুঁজুন</button>
+            </form>
+
+            <div class="mt-4 text-sm text-slate-500">সাহায্য: নাম, ক্যাটাগরি বা এলাকার নাম লিখে সার্চ করুন।</div>
+          </div>
+
+          <div class="bg-sky-100 p-4 rounded-lg">
+            <h3 class="font-semibold mb-3">দ্রুত লিংক</h3>
+            <div class="grid grid-cols-2 gap-3">
+              <a class="p-3 bg-white rounded-lg shadow flex items-center gap-3 cursor-pointer" data-href="union.html">🏢 ইউনিয়ন পরিষদ</a>
+              <a class="p-3 bg-white rounded-lg shadow flex items-center gap-3 cursor-pointer" data-href="emergency.html">🚨 জরুরি নাম্বার</a>
+              <a class="p-3 bg-white rounded-lg shadow flex items-center gap-3 cursor-pointer" data-href="hospitals.html">🏥 হাসপাতাল/ক্লিনিক</a>
+              <a class="p-3 bg-white rounded-lg shadow flex items-center gap-3 cursor-pointer" data-href="donors.html">🩸 রক্তদাতা</a>
+              <a class="p-3 bg-white rounded-lg shadow flex items-center gap-3 cursor-pointer" data-href="tuition.html">🎓 টিউশন</a>
+              <a class="p-3 bg-white rounded-lg shadow flex items-center gap-3 cursor-pointer" data-href="rent.html">🏠 বাসা ভাড়া</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- search results preview -->
+        <div id="resultsPreview" class="mt-8 hidden">
+          <h4 class="text-lg font-semibold mb-3">সার্চ ফলাফল</h4>
+          <div id="resultsGrid" class="grid gap-4 md:grid-cols-2 lg:grid-cols-3"></div>
+        </div>
+
+      </div>
+    </section>
+    
+    <!-- About Upazila (Upazila Porichiti) -->
+    <section id="about" class="container mx-auto px-6 py-12">
+      <div class="bg-white rounded-2xl shadow p-6 md:p-10 flex flex-col md:flex-row gap-6 items-center">
+        <div class="md:w-1/2">
+          <h2 class="text-2xl md:text-3xl font-bold mb-4">কর্ণফুলী উপজেলা পরিচিতি</h2>
+          <p class="text-slate-600 leading-relaxed mb-4">
+            কর্ণফুলী উপজেলা বাংলাদেশের চট্টগ্রাম জেলার একটি উপজেলা। এটি কর্ণফুলী নদীর নামে নামকরণ করা হয়েছে। এই উপজেলাটি প্রাকৃতিক সৌন্দর্যে ভরপুর, এখানে রয়েছে সবুজ পাহাড়, নদী এবং ঐতিহ্যবাহী গ্রাম। চট্টগ্রাম শহর থেকে খুব কাছে হওয়ায় এর গুরুত্ব অনেক।
+          </p>
+          <a href="#" class="inline-block bg-sky-600 text-white px-5 py-3 rounded-lg hover:bg-sky-700">আরও জানুন</a>
+        </div>
+        <div class="md:w-1/2 rounded-xl overflow-hidden shadow-lg">
+          <img src="https://placehold.co/800x600/0ea5e9/ffffff?text=Karnaphuli+Upazila" alt="কর্নফুলী উপজেলার একটি ছবি" class="w-full h-auto" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Emergency Services Section (More prominent) -->
+    <section class="container mx-auto px-6 py-12">
+      <div class="bg-rose-50 rounded-2xl shadow p-6 md:p-10">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold mb-2 text-rose-800">🚨 জরুরি নাম্বার</h3>
+          <p class="text-rose-600">যেকোনো জরুরি প্রয়োজনে যোগাযোগ করুন</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-5 rounded-lg shadow flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center text-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">পুলিশ</h4>
+              <a href="tel:+8801234567890" class="text-sm text-rose-500 hover:underline">+8801234567890</a>
+            </div>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center text-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">ফায়ার সার্ভিস</h4>
+              <a href="tel:+8801234567891" class="text-sm text-rose-500 hover:underline">+8801234567891</a>
+            </div>
+          </div>
+          <div class="bg-white p-5 rounded-lg shadow flex items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-rose-100 flex items-center justify-center text-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+            </div>
+            <div>
+              <h4 class="font-semibold">স্বাস্থ্য সেবা</h4>
+              <a href="tel:+8801234567892" class="text-sm text-rose-500 hover:underline">+8801234567892</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tourist Spots (Dorshoniyo Jaiga) -->
+    <section id="dorshoniyo" class="container mx-auto px-6 py-12">
+      <div class="bg-white rounded-2xl shadow p-6 md:p-10">
+        <div class="text-center mb-6">
+          <h3 class="text-2xl font-bold mb-2">কর্ণফুলী উপজেলার দর্শনীয় স্থান</h3>
+          <p class="text-slate-600">দর্শনীয় স্থান ও প্রাকৃতিক সৌন্দর্য উপভোগ করুন</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+            <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Tourist+Spot+1" alt="দর্শনীয় স্থান ১" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h4 class="font-semibold text-lg">কর্ণফুলী নদী</h4>
+              <p class="text-sm text-slate-500 mt-2">নৌ-ভ্রমণ এবং নদীর তীরে সময় কাটানোর জন্য দারুণ জায়গা।</p>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+            <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Tourist+Spot+2" alt="দর্শনীয় স্থান ২" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h4 class="font-semibold text-lg">গ্রামের হাট-বাজার</h4>
+              <p class="text-sm text-slate-500 mt-2">ঐতিহ্যবাহী গ্রামের জীবনযাত্রা ও স্থানীয় পণ্য উপভোগ করুন।</p>
+            </div>
+          </div>
+          <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition">
+            <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Tourist+Spot+3" alt="দর্শনীয় স্থান ৩" class="w-full h-48 object-cover" />
+            <div class="p-4">
+              <h4 class="font-semibold text-lg">চা বাগান</h4>
+              <p class="text-sm text-slate-500 mt-2">সবুজ চা বাগানের সৌন্দর্য এবং শান্ত পরিবেশে হাঁটাহাঁটি করুন।</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features / Cards -->
+    <section id="features" class="container mx-auto px-6 py-12">
+      <h3 class="text-2xl font-bold mb-6 text-center">আমাদের প্রধান ফিচার</h3>
+      <p class="text-center text-slate-600 mb-8">হোমপেজে সংক্ষেপে সব গুরুত্বপূর্ণ বিভাগের প্রিভিউ — সম্পূর্ণ তালিকা আলাদা পেজে পাওয়া যাবে।</p>
+
+      <div class="grid gap-6 md:grid-cols-3 lg:grid-cols-4">
+        <!-- card template -->
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="union.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-sky-50 flex items-center justify-center text-2xl">🏢</div>
+            <div>
+              <h4 class="font-semibold">ইউনিয়ন পরিষদ</h4>
+              <p class="text-sm text-slate-500">চেয়ারম্যান, মেম্বার, সচিব ও যোগাযোগ নম্বর</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="emergency.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-red-50 flex items-center justify-center text-2xl">🚨</div>
+            <div>
+              <h4 class="font-semibold">জরুরী নাম্বার</h4>
+              <p class="text-sm text-slate-500">থানা, ফায়ার সার্ভিস, এম্বুল্যান্স, বিদ্যুৎ অফিস</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="hospitals.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-green-50 flex items-center justify-center text-2xl">🏥</div>
+            <div>
+              <h4 class="font-semibold">হাসপাতাল/ক্লিনিক</h4>
+              <p class="text-sm text-slate-500">নাম, ঠিকানা, ফোন নম্বর ও সেবা বিবরণ</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="schools.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-amber-50 flex items-center justify-center text-2xl">📚</div>
+            <div>
+              <h4 class="font-semibold">স্কুল/কলেজ/কোচিং</h4>
+              <p class="text-sm text-slate-500">শিক্ষা প্রতিষ্ঠানের তালিকা ও যোগাযোগ</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="services.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-violet-50 flex items-center justify-center text-2xl">🛠️</div>
+            <div>
+              <h4 class="font-semibold">কারিগরি সার্ভিস</h4>
+              <p class="text-sm text-slate-500">রাজমিস্ত্রি, ইলেকট্রিশিয়ান, প্লাম্বার, মেকানিক</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="tuition.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-rose-50 flex items-center justify-center text-2xl">🎓</div>
+            <div>
+              <h4 class="font-semibold">টিউশন/টিউটার খোঁজ</h4>
+              <p class="text-sm text-slate-500">বিষয়, ক্লাস, অনলাইন/অফলাইন বিকল্প</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="rent.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-emerald-50 flex items-center justify-center text-2xl">🏠</div>
+            <div>
+              <h4 class="font-semibold">বাসা ভাড়া</h4>
+              <p class="text-sm text-slate-500">লোকেশন, ভাড়া, বাড়িওয়ালার যোগাযোগ</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="transport.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-slate-50 flex items-center justify-center text-2xl">🚌</div>
+            <div>
+              <h4 class="font-semibold">পরিবহন</h4>
+              <p class="text-sm text-slate-500">বাস কাউন্টার, সিএনজি স্ট্যান্ড, ট্রাভেল এজেন্সি</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white p-5 rounded-2xl shadow hover:card-focus transition cursor-pointer feature-card" data-href="donors.html">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-pink-50 flex items-center justify-center text-2xl">🩸</div>
+            <div>
+              <h4 class="font-semibold">রক্তদাতা তালিকা</h4>
+              <p class="text-sm text-slate-500">রক্ত গ্রুপ, এলাকা ফিল্টার ও দ্রুত কল</p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Notices + Events + Weather preview -->
+    <section class="container mx-auto px-6 py-8 grid gap-6 md:grid-cols-3">
+      <div id="notices" class="bg-white rounded-2xl shadow p-5">
+        <h4 class="font-semibold mb-3">নোটিশ বোর্ড</h4>
+        <ul class="space-y-2 text-sm text-slate-600">
+          <li>• ১২ অক্টোবর: উপজেলা স্বাস্থ্য শিবির । <a href="#" class="text-sky-600">বিস্তারিত</a></li>
+          <li>• ৫ অক্টোবর: রাস্তা মেরামত ঘোষণা । <a href="#" class="text-sky-600">বিস্তারিত</a></li>
+          <li>• ২৯ সেপ্টেম্বর: বিদ্যালয় ছুটির বিজ্ঞপ্তি । <a href="#" class="text-sky-600">বিস্তারিত</a></li>
+        </ul>
+        <a href="notice.html" class="inline-block mt-3 text-sm text-sky-600">সব নোটিশ দেখুন →</a>
+      </div>
+
+      <div id="events" class="bg-white rounded-2xl shadow p-5">
+        <h4 class="font-semibold mb-3">আসন্ন ইভেন্ট</h4>
+        <div class="space-y-3 text-sm text-slate-600">
+          <div class="flex items-start gap-3"><div class="text-sm font-semibold">📅 ২৫ অক্টোবর</div><div>উপজেলা মেলায় অংশগ্রহণকারী তালিকা প্রকাশ</div></div>
+          <div class="flex items-start gap-3"><div class="text-sm font-semibold">📅 ১০ নভেম্বর</div><div>শিক্ষা মেলার প্রস্তুতি সভা</div></div>
+        </div>
+        <a href="events.html" class="inline-block mt-3 text-sm text-sky-600">সব ইভেন্ট দেখুন →</a>
+      </div>
+
+      <div id="weather" class="bg-white rounded-2xl shadow p-5">
+        <h4 class="font-semibold mb-3">বর্তমান আবহাওয়া</h4>
+        <div class="text-sm text-slate-600">ঢাকা, বাংলাদেশ — ২৮°C, আকাশ মেঘলা। (লেটেস্ট আপডেটের জন্য আবহাওয়া API সংযুক্ত করুন)</div>
+        <a href="#" class="inline-block mt-3 text-sm text-sky-600">আরও দেখুন →</a>
+      </div>
+    </section>
+
+    <!-- Donors filter preview -->
+    <section id="donors" class="container mx-auto px-6 py-10">
+      <div class="bg-white rounded-2xl shadow p-6">
+        <div class="flex items-center justify-between">
+          <h4 class="font-semibold">রক্তদাতা (ফিল্টার করে সার্চ)</h4>
+          <a href="donors.html" class="text-sky-600 text-sm">সব দেখুন →</a>
+        </div>
+
+        <div class="mt-4 grid gap-4 md:grid-cols-3">
+          <div>
+            <input id="donorQ" type="text" placeholder="নাম বা এলাকা লিখুন" class="w-full p-3 rounded-lg border" />
+          </div>
+          <div>
+            <select id="donorGroup" class="w-full p-3 rounded-lg border">
+              <option value="">সব গ্রুপ</option>
+              <option>A+</option>
+              <option>O+</option>
+              <option>B+</option>
+              <option>AB+</option>
+              <option>A-</option>
+            </select>
+          </div>
+          <div>
+            <button id="donorSearch" class="w-full bg-rose-600 text-white p-3 rounded-lg">Search</button>
+          </div>
+        </div>
+
+        <div id="donorResults" class="mt-4 grid gap-3"></div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-slate-800 text-white py-8">
+      <div class="container mx-auto px-6 grid md:grid-cols-3 gap-6">
+        <div>
+          <h5 class="font-semibold mb-2"> কর্ণফুলী উপজেলা লোকাল ডিরেক্টরি</h5>
+          <p class="text-sm text-slate-300">আপনার এলাকার সরকারি ও বেসরকারি সেবা খুঁজে নিন সহজে।</p>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-2">দ্রুত লিংক</h5>
+          <ul class="text-sm text-slate-300 space-y-1">
+            <li><a href="union.html">ইউনিয়ন পরিষদ</a></li>
+            <li><a href="emergency.html">জরুরী নাম্বার</a></li>
+            <li><a href="hospitals.html">হাসপাতাল</a></li>
+            <li><a href="donors.html">রক্তদাতা</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-semibold mb-2">যোগাযোগ</h5>
+          <p class="text-sm text-slate-300">ইমেইল: info@upazila.example<br>ফোন: +8801871-536468</p>
+        </div>
+      </div>
+      <div class="text-center text-sm text-slate-400 mt-6">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — সব অধিকার সংরক্ষিত</div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobileToggle').addEventListener('click', ()=>{
+      document.getElementById('mobileMenu').classList.toggle('hidden')
+    })
+
+    // card click redirect
+    document.querySelectorAll('[data-href]').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const href = el.getAttribute('data-href') || '#'
+        window.location.href = href
+      })
+    })
+
+    // quick links redirect (in hero)
+    document.querySelectorAll('[data-href]').forEach(el=>el.style.cursor='pointer')
+
+    // sample client-side search (mock)
+    const sampleData = [
+      {title:'উপজেলা সদর হাসপাতাল', category:'হাসপাতাল', area:'উপজেলা সদর', phone:'+88017-0000001', href:'hospitals.html'},
+      {title:'পশ্চিম ইউনিয়ন পরিষদ', category:'ইউনিয়ন পরিষদ', area:'পশ্চিম ইউনিয়ন', phone:'+88017-0000002', href:'union.html'},
+      {title:'রাজমিস্ত্রি - আলম', category:'কারিগরি সার্ভিস', area:'উপজেলা সদর', phone:'+88017-0000003', href:'services.html'},
+      {title:'কর্নফুলী সেতু', category:'দর্শনীয় স্থান', area:'উপজেলা সদর', phone:null, href:'#'},
+      {title:'পুলিশ স্টেশন', category:'জরুরী নাম্বার', area:'উপজেলা সদর', phone:'+8801234567890', href:'emergency.html'},
+      {title:'ফায়ার সার্ভিস', category:'জরুরী নাম্বার', area:'উপজেলা সদর', phone:'+8801234567891', href:'emergency.html'},
+    ]
+
+    document.getElementById('searchForm').addEventListener('submit', e=>{
+      e.preventDefault()
+      const q = document.getElementById('q').value.trim().toLowerCase()
+      const cat = document.getElementById('cat').value
+      const area = document.getElementById('area').value
+      const results = sampleData.filter(it=>{
+        const matchesQ = q? (it.title.toLowerCase().includes(q) || it.category.toLowerCase().includes(q) || it.area.toLowerCase().includes(q)) : true
+        const matchesCat = cat? it.category===cat : true
+        const matchesArea = area? it.area===area : true
+        return matchesQ && matchesCat && matchesArea
+      })
+
+      const preview = document.getElementById('resultsPreview')
+      const grid = document.getElementById('resultsGrid')
+      grid.innerHTML = ''
+      if(results.length===0){
+        preview.classList.remove('hidden')
+        grid.innerHTML = '<div class="text-sm text-slate-500">কোন ফলাফল পাওয়া যায়নি — সম্পূর্ণ তালিকার জন্য নির্দিষ্ট পেজ দেখুন।</div>'
+        return
+      }
+      preview.classList.remove('hidden')
+      results.forEach(r=>{
+        const card = document.createElement('a')
+        card.href = r.href
+        card.className = 'block bg-white p-4 rounded-lg shadow hover:shadow-lg'
+        card.innerHTML = `<div class=\"flex justify-between items-start gap-3\"><div><div class=\"font-semibold\">${r.title}</div><div class=\"text-sm text-slate-500\">${r.category} · ${r.area}</div></div><div class=\"text-sm text-sky-600\">${r.phone || 'N/A'}</div></div>`
+        grid.appendChild(card)
+      })
+    })
+
+    // donors mock search
+    const donors = [
+      {name:'মোঃ হাসান', group:'A+', area:'উপজেলা সদর', phone:'+88017000001'},
+      {name:'সালমা খান', group:'O+', area:'পশ্চিম ইউনিয়ন', phone:'+88017000002'},
+      {name:'রফিকুল', group:'B+', area:'উত্তর ইউনিয়ন', phone:'+88017000003'},
+    ]
+
+    document.getElementById('donorSearch').addEventListener('click', ()=>{
+      const q = document.getElementById('donorQ').value.trim().toLowerCase()
+      const g = document.getElementById('donorGroup').value
+      const res = donors.filter(d=>{
+        const matchQ = q? (d.name.toLowerCase().includes(q) || d.area.toLowerCase().includes(q)) : true
+        const matchG = g? d.group===g : true
+        return matchQ && matchG
+      })
+      const box = document.getElementById('donorResults')
+      box.innerHTML = ''
+      if(res.length===0){ box.innerHTML = '<div class="text-sm text-slate-500">কোনো রক্তদাতা পাওয়া যায়নি।</div>'; return }
+      res.forEach(d=>{
+        const el = document.createElement('div')
+        el.className = 'p-3 bg-slate-50 rounded-lg flex items-center justify-between'
+        el.innerHTML = `<div><div class=\"font-medium\">${d.name} · ${d.group}</div><div class=\"text-sm text-slate-500\">${d.area}</div></div><a href=\"tel:${d.phone}\" class=\"text-rose-600 font-semibold\">${d.phone}</a>`
+        box.appendChild(el)
+      })
+    })
+
+    // helpful: set focus on search input on load
+    document.getElementById('q').focus()
+  </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ইউনিয়ন পরিষদ ডিরেক্টরি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {font-family: 'Noto Sans Bengali', sans-serif;}
+    .union-card {
+      background: #ffffff;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .union-card:hover {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+      transform: translateY(-5px);
+    }
+    .header-bg {
+        background: linear-gradient(to right, #4c51bf, #6b46c1);
+    }
+    .person-card {
+      background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+      border: 1px solid #c7d2fe;
+    }
+    .member-card {
+      background: #f8f8f8;
+      border: 1px solid #e5e7eb;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-slate-800 min-h-screen flex flex-col">
+  
+  <header class="header-bg text-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold flex items-center gap-2">🗺️ ইউনিয়ন পরিষদ</h1>
+      <a href="index.html" class="text-sm underline hover:text-yellow-300 transition">⬅ হোমে ফিরুন</a>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-10">
+    <h2 class="text-4xl font-extrabold mb-4 text-center text-gray-800">ইউনিয়ন পরিষদ ডিরেক্টরি</h2>
+    <p class="text-center text-slate-600 max-w-3xl mx-auto mb-10">এখানে আপনার উপজেলার সকল ইউনিয়নের চেয়ারম্যান, সচিব, ইউডিসি ও মেম্বারদের তথ্য পাবেন।</p>
+
+    <div id="unionContainer" class="space-y-12">
+      </div>
+
+  </main>
+
+  <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
+    <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — ইউনিয়ন পরিষদ</p>
+  </footer>
+
+  <script>
+    const unionData = [
+      {
+        name: '১ নং চরলক্ষ্যা ইউনিয়ন',
+        color: 'bg-indigo-500',
+        chairman: { name: 'জনাব আব্দুল হক', phone: '+8801700010101', email: 'chairman.charlakkhiya@example.com' },
+        secretary: { name: 'জনাব সুমন বড়ুয়া', phone: '+8801700010102', email: 'secretary.charlakkhiya@example.com' },
+        udc: { name: 'মো. হাবিবুর রহমান', phone: '+8801700010103', email: 'udc.charlakkhiya@example.com' },
+        members: [
+          { name: 'আনিসুল ইসলাম', phone: '+8801700010111', ward: 1 },
+          { name: 'রেহেনা আক্তার', phone: '+8801700010112', ward: 2 },
+          { name: 'মো. জসিম উদ্দিন', phone: '+8801700010113', ward: 3 },
+          { name: 'সালামত আলী', phone: '+8801700010114', ward: 4 },
+          { name: 'ফাতেমা বেগম', phone: '+8801700010115', ward: 5 },
+          { name: 'কামাল হোসেন', phone: '+8801700010116', ward: 6 },
+          { name: 'সখিনা আক্তার', phone: '+8801700010117', ward: 7 },
+          { name: 'আব্দুর রহিম', phone: '+8801700010118', ward: 8 },
+          { name: 'লুৎফর রহমান', phone: '+8801700010119', ward: 9 }
+        ]
+      },
+      {
+        name: '২ নং চরপাথরঘাটা ইউনিয়ন',
+        color: 'bg-green-500',
+        chairman: { name: 'জনাব দিদারুল আলম', phone: '+8801700020201', email: 'chairman.charpathorghata@example.com' },
+        secretary: { name: 'জনাব ফরিদা ইয়াসমিন', phone: '+8801700020202', email: 'secretary.charpathorghata@example.com' },
+        udc: { name: 'মাকসুদুল আলম', phone: '+8801700020203', email: 'udc.charpathorghata@example.com' },
+        members: [
+          { name: 'মো. রফিক', phone: '+8801700020211', ward: 1 },
+          { name: 'লুৎফুর নাহার', phone: '+8801700020212', ward: 2 },
+          { name: 'কামরুল হাসান', phone: '+8801700020213', ward: 3 },
+          { name: 'আব্দুর রহমান', phone: '+8801700020214', ward: 4 },
+          { name: 'সালেহা বেগম', phone: '+8801700020215', ward: 5 },
+          { name: 'মো. ইউসুফ', phone: '+8801700020216', ward: 6 },
+          { name: 'সেলিনা আক্তার', phone: '+8801700020217', ward: 7 },
+          { name: 'আলী আহমদ', phone: '+8801700020218', ward: 8 },
+          { name: 'বিল্লাল হোসেন', phone: '+8801700020219', ward: 9 }
+        ]
+      },
+      {
+        name: '৩ নং জুলধা ইউনিয়ন',
+        color: 'bg-blue-500',
+        chairman: { name: 'জনাব আমীর হোসেন', phone: '+8801700030301', email: 'chairman.julda@example.com' },
+        secretary: { name: 'জনাব আরিফ উল্লাহ', phone: '+8801700030302', email: 'secretary.julda@example.com' },
+        udc: { name: 'আলিফ হোসেন', phone: '+8801700030303', email: 'udc.julda@example.com' },
+        members: [
+          { name: 'শামীম আক্তার', phone: '+8801700030311', ward: 1 },
+          { name: 'ফজলুল কাদের', phone: '+8801700030312', ward: 2 },
+          { name: 'মো. সেলিম', phone: '+8801700030313', ward: 3 },
+          { name: 'ফজলুল হক', phone: '+8801700030314', ward: 4 },
+          { name: 'নাসিমা বেগম', phone: '+8801700030315', ward: 5 },
+          { name: 'মো. হানিফ', phone: '+8801700030316', ward: 6 },
+          { name: 'রিয়াজুল ইসলাম', phone: '+8801700030317', ward: 7 },
+          { name: 'আয়েশা বেগম', phone: '+8801700030318', ward: 8 },
+          { name: 'হানিফুর রহমান', phone: '+8801700030319', ward: 9 }
+        ]
+      },
+      {
+        name: '৪ নং শিকলবাহা ইউনিয়ন',
+        color: 'bg-purple-500',
+        chairman: { name: 'জনাব মো. জাহাঙ্গীর আলম', phone: '+8801700040401', email: 'chairman.shikolbaha@example.com' },
+        secretary: { name: 'ড. ফারজানা বেগম', phone: '+8801700040402', email: 'secretary.shikolbaha@example.com' },
+        udc: { name: 'মো. সোহেল রানা', phone: '+8801700040403', email: 'udc.shikolbaha@example.com' },
+        members: [
+          { name: 'মো. ইয়াসিন', phone: '+8801700040411', ward: 1 },
+          { name: 'আলেয়া বেগম', phone: '+8801700040412', ward: 2 },
+          { name: 'কামাল উদ্দিন', phone: '+8801700040413', ward: 3 },
+          { name: 'রেজাউল করিম', phone: '+8801700040414', ward: 4 },
+          { name: 'সুমন হোসেন', phone: '+8801700040415', ward: 5 },
+          { name: 'সখিনা বেগম', phone: '+8801700040416', ward: 6 },
+          { name: 'মো. শফিউল আলম', phone: '+8801700040417', ward: 7 },
+          { name: 'জসিম উদ্দিন', phone: '+8801700040418', ward: 8 },
+          { name: 'ফরিদা আক্তার', phone: '+8801700040419', ward: 9 }
+        ]
+      },
+      {
+        name: '৫ নং বড়উঠান ইউনিয়ন',
+        color: 'bg-red-500',
+        chairman: { name: 'জনাব মফিজুর রহমান', phone: '+8801700050501', email: 'chairman.boroutan@example.com' },
+        secretary: { name: 'জনাব জসিম উদ্দিন', phone: '+8801700050502', email: 'secretary.boroutan@example.com' },
+        udc: { name: 'সালমা বেগম', phone: '+8801700050503', email: 'udc.boroutan@example.com' },
+        members: [
+          { name: 'শাহ আলম', phone: '+8801700050511', ward: 1 },
+          { name: 'রওশন আরা বেগম', phone: '+8801700050512', ward: 2 },
+          { name: 'বিল্লাল হোসেন', phone: '+8801700050513', ward: 3 },
+          { name: 'সখিনা আক্তার', phone: '+8801700050514', ward: 4 },
+          { name: 'মো. রফিকুল ইসলাম', phone: '+8801700050515', ward: 5 },
+          { name: 'আনোয়ার হোসেন', phone: '+8801700050516', ward: 6 },
+          { name: 'পারভেজ মিয়া', phone: '+8801700050517', ward: 7 },
+          { name: 'নুরজাহান বেগম', phone: '+8801700050518', ward: 8 },
+          { name: 'মো. আলমগীর', phone: '+8801700050519', ward: 9 }
+        ]
+      }
+    ];
+
+    const container = document.getElementById('unionContainer');
+
+    function renderUnions() {
+      container.innerHTML = '';
+      unionData.forEach(union => {
+        const unionSection = document.createElement('section');
+        unionSection.className = 'union-card rounded-xl p-8';
+        unionSection.innerHTML = `
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 rounded-full ${union.color} flex items-center justify-center text-white text-xl font-bold">${union.name.split(' ')[0]}</div>
+            <h3 class="text-3xl font-extrabold text-gray-800">${union.name}</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            ${createPersonCard('চেয়ারম্যান', union.chairman.name, union.chairman.phone, union.chairman.email, 'fas fa-user-tie')}
+            ${createPersonCard('সচিব', union.secretary.name, union.secretary.phone, union.secretary.email, 'fas fa-id-badge')}
+            ${createPersonCard('ইউডিসি', union.udc.name, union.udc.phone, union.udc.email, 'fas fa-desktop')}
+          </div>
+
+          <div class="bg-gray-50 rounded-lg p-6">
+            <h4 class="text-xl font-bold mb-4 text-gray-700">নির্বাচিত মেম্বারবৃন্দ</h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              ${union.members.map(member => `
+                <div class="p-4 bg-white rounded-lg flex items-center gap-4 border border-gray-200 member-card">
+                  <div>
+                    <p class="font-medium">${member.name}</p>
+                    <p class="text-sm font-bold text-gray-500">ওয়ার্ড নং-${member.ward}</p>
+                    <p class="text-sm text-blue-600 hover:underline"><a href="tel:${member.phone}">${member.phone}</a></p>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+        container.appendChild(unionSection);
+      });
+    }
+
+    function createPersonCard(role, name, phone, email, iconClass) {
+      return `
+        <div class="person-card rounded-xl p-6 text-center flex flex-col items-center">
+          <div class="text-3xl text-indigo-700 mb-3"><i class="${iconClass}"></i></div>
+          <p class="text-sm font-semibold text-gray-600 mb-1">${role}</p>
+          <h4 class="text-lg font-bold text-gray-800">${name}</h4>
+          <div class="text-sm text-gray-500 mt-2 space-y-1">
+            ${phone ? `<p><a href="tel:${phone}" class="hover:underline text-blue-600"><i class="fas fa-phone-alt mr-2"></i>${phone}</a></p>` : ''}
+            ${email ? `<p><a href="mailto:${email}" class="hover:underline text-blue-600"><i class="fas fa-envelope mr-2"></i>${email}</a></p>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    // Initial render
+    renderUnions();
+  </script>
+</body> 
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>গুরুত্বপূর্ণ বিজ্ঞপ্তি — উপজেলা লোকাল ডিরেক্টরি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {font-family: 'Noto Sans Bengali', sans-serif;}
+    .notice-card {
+      background: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    .download-btn {
+      background: #3b82f6;
+      transition: all 0.3s ease;
+    }
+    .download-btn:hover {
+      background: #2563eb;
+      box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.3), 0 2px 4px -1px rgba(59, 130, 246, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-slate-800 min-h-screen flex flex-col">
+  
+  <header class="bg-blue-600 text-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold flex items-center gap-2">📢 নোটিশ বোর্ড</h1>
+      <a href="index.html" class="text-sm underline hover:text-yellow-300">⬅ হোমে ফিরুন</a>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-10">
+    <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">গুরুত্বপূর্ণ বিজ্ঞপ্তি ও নোটিশ</h2>
+    <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">উপজেলা থেকে প্রকাশিত সকল গুরুত্বপূর্ণ বিজ্ঞপ্তি ও নোটিশ এখানে দেখতে ও ডাউনলোড করতে পারবেন।</p>
+
+    <div id="notice-list" class="space-y-6">
+      </div>
+    
+  </main>
+
+  <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
+    <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — নোটিশ বোর্ড</p>
+  </footer>
+
+  <script>
+    const notices = [
+      {
+        title: 'উপজেলা পরিষদ নির্বাচন সংক্রান্ত জরুরি বিজ্ঞপ্তি',
+        date: '২০২৫-০৮-১৫',
+        description: 'আসন্ন উপজেলা পরিষদ নির্বাচন উপলক্ষে বিশেষ নির্বাচনী আচরণবিধি ও ভোটগ্রহণের তারিখ সংক্রান্ত একটি জরুরি বিজ্ঞপ্তি।',
+        file: 'https://www.example.com/notices/election-notice.pdf'
+      },
+      {
+        title: 'শিক্ষাবৃত্তি প্রদানের আবেদন সংক্রান্ত নোটিশ',
+        date: '২০২৫-০৮-১০',
+        description: '২০২৪-২০২৫ শিক্ষাবর্ষে অসচ্ছল ও মেধাবী শিক্ষার্থীদের জন্য শিক্ষাবৃত্তি প্রদানের আবেদন জমা দেওয়ার শেষ তারিখ সংক্রান্ত বিজ্ঞপ্তি।',
+        file: 'https://www.example.com/notices/scholarship-form.pdf'
+      },
+      {
+        title: 'স্বাস্থ্যসেবা বিষয়ক কর্মশালায় অংশগ্রহণের বিজ্ঞপ্তি',
+        date: '২০২৫-০৭-৩০',
+        description: 'স্থানীয় জনগণের জন্য স্বাস্থ্য সচেতনতা বৃদ্ধির লক্ষ্যে আয়োজিত কর্মশালায় অংশগ্রহণের জন্য একটি সাধারণ বিজ্ঞপ্তি।',
+        file: 'https://www.example.com/notices/health-workshop.pdf'
+      },
+      {
+        title: 'পানির বিল পরিশোধের সময়সীমা বৃদ্ধি সংক্রান্ত বিজ্ঞপ্তি',
+        date: '২০২৫-০৭-২৫',
+        description: 'চলতি মাসের পানির বিল পরিশোধের শেষ তারিখ অনিবার্য কারণবশত বৃদ্ধি করা হয়েছে। বিস্তারিত জানতে নোটিশটি দেখুন।',
+        file: 'https://www.example.com/notices/water-bill-notice.pdf'
+      },
+    ];
+
+    const noticeList = document.getElementById('notice-list');
+
+    function renderNotices() {
+      noticeList.innerHTML = '';
+      notices.forEach(notice => {
+        const noticeCard = document.createElement('div');
+        noticeCard.className = 'notice-card p-6 rounded-lg flex flex-col md:flex-row justify-between items-start md:items-center gap-4';
+        
+        noticeCard.innerHTML = `
+          <div class="flex-1">
+            <h3 class="text-xl font-bold text-gray-900 mb-1">${notice.title}</h3>
+            <p class="text-sm text-gray-500 mb-2">প্রকাশের তারিখ: ${notice.date}</p>
+            <p class="text-slate-700">${notice.description}</p>
+          </div>
+          <div class="md:shrink-0 mt-4 md:mt-0">
+            <a href="${notice.file}" target="_blank" class="download-btn text-white font-semibold px-6 py-3 rounded-full flex items-center gap-2 whitespace-nowrap">
+              <i class="fas fa-download"></i> ডাউনলোড করুন
+            </a>
+          </div>
+        `;
+        noticeList.appendChild(noticeCard);
+      });
+    }
+
+    renderNotices();
+  </script>
+</body>
+</html>

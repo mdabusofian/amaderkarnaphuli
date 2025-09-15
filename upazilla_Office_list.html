@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>সরকারি অফিসসমূহ — উপজেলা লোকাল ডিরেক্টরি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {font-family: 'Noto Sans Bengali', sans-serif;}
+    .card-gradient {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+    .header-bg {
+        background: linear-gradient(to right, #2a4365, #1e3a8a);
+    }
+    .search-input {
+      border: 1px solid #cbd5e1;
+      border-radius: 0.5rem;
+    }
+    .search-input:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 min-h-screen flex flex-col">
+  
+  <header class="header-bg text-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold flex items-center gap-2">🏛️ উপজেলা সরকারি অফিস</h1>
+      <a href="index.html" class="text-sm underline hover:text-yellow-300 transition">⬅ হোমে ফিরুন</a>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-10">
+    <h2 class="text-4xl font-extrabold mb-4 text-center text-gray-800">সরকারি অফিসসমূহের ডিরেক্টরি</h2>
+    <p class="text-center text-slate-600 max-w-3xl mx-auto mb-10">উপজেলার সকল সরকারি অফিসের নাম, প্রধান, যোগাযোগের তথ্য এবং ওয়েবসাইট এখানে দেখুন।</p>
+
+    <div class="mb-8 p-6 bg-white rounded-xl shadow-lg border border-gray-200">
+      <div class="relative">
+        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+          <i class="fas fa-search text-gray-400"></i>
+        </div>
+        <input type="text" id="searchQuery" placeholder="অফিসের নাম বা প্রধানের নাম দিয়ে খুঁজুন..." class="search-input w-full pl-10 pr-4 py-2 text-gray-700">
+      </div>
+    </div>
+
+    <div id="officeList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      </div>
+    
+    <div id="noResults" class="hidden text-center text-lg text-slate-500 mt-10">
+      কোনো ফলাফল পাওয়া যায়নি।
+    </div>
+
+  </main>
+
+  <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
+    <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — সরকারি অফিস</p>
+  </footer>
+
+  <script>
+    const governmentOffices = [
+      { 
+        name: 'উপজেলা নির্বাহী অফিসারের কার্যালয়', 
+        head: 'জনাব মো. ফখরুল ইসলাম (ইউএনও)', 
+        phone: '+8801700012345', 
+        email: 'uno.karnaphuli@example.com', 
+        website: 'https://karnaphuli.chittagong.gov.bd' 
+      },
+      { 
+        name: 'উপজেলা কৃষি অফিস', 
+        head: 'ড. রুহুল আমিন (উপজেলা কৃষি অফিসার)', 
+        phone: '+8801700023456', 
+        email: 'agriculture.karnaphuli@example.com', 
+        website: '' 
+      },
+      { 
+        name: 'উপজেলা স্বাস্থ্য কমপ্লেক্স', 
+        head: 'ডা. সানজিদা ইসলাম (উপজেলা স্বাস্থ্য ও প.প. কর্মকর্তা)', 
+        phone: '+8801700034567', 
+        email: 'health.karnaphuli@example.com', 
+        website: '' 
+      },
+      { 
+        name: 'উপজেলা মাধ্যমিক শিক্ষা অফিস', 
+        head: 'জনাব সাইফুর রহমান (উপজেলা মাধ্যমিক শিক্ষা অফিসার)', 
+        phone: '+8801700045678', 
+        email: 'education.karnaphuli@example.com', 
+        website: 'https://seokarnaphuli.gov.bd' 
+      },
+      { 
+        name: 'উপজেলা সমাজসেবা অফিস', 
+        head: 'জনাব মারিয়া আক্তার (উপজেলা সমাজসেবা অফিসার)', 
+        phone: '+8801700056789', 
+        email: 'social.service.karnaphuli@example.com', 
+        website: '' 
+      },
+      { 
+        name: 'উপজেলা নির্বাচন অফিস', 
+        head: 'জনাব আরিফ উদ্দিন (উপজেলা নির্বাচন অফিসার)', 
+        phone: '+8801700067890', 
+        email: 'election.karnaphuli@example.com', 
+        website: '' 
+      },
+      // আপনার উপজেলার তথ্য এখানে যুক্ত করুন
+    ];
+
+    const list = document.getElementById('officeList');
+    const searchQueryInput = document.getElementById('searchQuery');
+    const noResultsMessage = document.getElementById('noResults');
+
+    function renderOffices(filteredOffices) {
+      list.innerHTML = '';
+      if (filteredOffices.length === 0) {
+        noResultsMessage.classList.remove('hidden');
+      } else {
+        noResultsMessage.classList.add('hidden');
+        filteredOffices.forEach(office => {
+          const card = document.createElement('div');
+          card.className = 'card-gradient rounded-xl shadow-md p-6 border border-blue-100 transition-all duration-300 card-hover';
+          card.innerHTML = `
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-4xl text-blue-600">🏢</span>
+              <h3 class="text-xl font-bold text-gray-800">${office.name}</h3>
+            </div>
+            <div class="space-y-3 text-sm text-gray-600">
+              <p><i class="fas fa-user-tie text-gray-500 mr-2"></i> প্রধান: <span class="font-medium text-slate-700">${office.head}</span></p>
+              ${office.phone ? `<p><i class="fas fa-phone-alt text-gray-500 mr-2"></i> <a href="tel:${office.phone}" class="hover:underline text-blue-600">${office.phone}</a></p>` : ''}
+              ${office.email ? `<p><i class="fas fa-envelope text-gray-500 mr-2"></i> <a href="mailto:${office.email}" class="hover:underline text-blue-600">${office.email}</a></p>` : ''}
+              ${office.website ? `<p><i class="fas fa-globe text-gray-500 mr-2"></i> <a href="${office.website}" target="_blank" class="hover:underline text-blue-600">${office.website}</a></p>` : ''}
+            </div>
+            <div class="mt-4 text-center">
+              ${office.website ? `<a href="${office.website}" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300">
+                <i class="fas fa-external-link-alt mr-2"></i> ওয়েবসাইট দেখুন
+              </a>` : ''}
+            </div>
+          `;
+          list.appendChild(card);
+        });
+      }
+    }
+
+    function filterAndRender(){
+      const query = searchQueryInput.value.toLowerCase();
+      
+      const filtered = governmentOffices.filter(office => {
+        const matchesQuery = office.name.toLowerCase().includes(query) || office.head.toLowerCase().includes(query);
+        return matchesQuery;
+      });
+      
+      renderOffices(filtered);
+    }
+
+    searchQueryInput.addEventListener('input', filterAndRender);
+
+    // Initial render
+    filterAndRender();
+  </script>
+</body>
+</html>

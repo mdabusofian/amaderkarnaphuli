@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>হাসপাতাল ও ক্লিনিক — উপজেলা লোকাল ডিরেক্টরি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {font-family: 'Noto Sans Bengali', sans-serif;}
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-white to-green-50 text-slate-800 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-green-600 to-emerald-700 text-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold flex items-center gap-2">🏥 হাসপাতাল ও ক্লিনিক</h1>
+      <a href="index.html" class="text-sm underline hover:text-yellow-300">⬅ হোমে ফিরুন</a>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-10">
+    <h2 class="text-3xl font-bold mb-6 text-center">উপজেলার হাসপাতাল ও ক্লিনিক তালিকা</h2>
+    <p class="text-center text-slate-600 max-w-2xl mx-auto mb-6">এখানে কর্ণফুলী উপজেলার সরকারি, বেসরকারি হাসপাতাল ও ক্লিনিকের ঠিকানা ও যোগাযোগ নাম্বার দেখুন।</p>
+
+    <!-- Hospital List -->
+    <div id="hospitalList" class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <!-- Sample Data -->
+    </div>
+  </main>
+
+  <footer class="bg-slate-800 text-white py-6 text-center">
+    <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — হাসপাতাল ও ক্লিনিক</p>
+  </footer>
+
+  <script>
+    const hospitals = [
+      {name:'কর্ণফুলী উপজেলা স্বাস্থ্য কমপ্লেক্স', address:'শিকলবাহা, কর্ণফুলী', phone:'+8801700011111'},
+      {name:'সিটি হাসপাতাল', address:'চরলক্ষা রোড, কর্ণফুলী', phone:'+8801700022222'},
+      {name:'নিউ হোপ ক্লিনিক', address:'বড়উঠান বাজার, কর্ণফুলী', phone:'+8801700033333'},
+      {name:'জনসেবা ডায়াগনস্টিক সেন্টার', address:'জুলধা', phone:'+8801700044444'},
+      {name:'চরপাথরঘাটা হেলথ কেয়ার', address:'চরপাথরঘাটা', phone:'+8801700055555'}
+    ];
+
+    const list = document.getElementById('hospitalList');
+
+    function renderHospitals(){
+      list.innerHTML = '';
+      hospitals.forEach(h => {
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-xl shadow-lg p-5 hover:shadow-2xl transition';
+        card.innerHTML = `<h3 class="text-xl font-semibold mb-1">${h.name}</h3>
+          <p class="text-sm text-slate-600 mb-1">🏠 ${h.address}</p>
+          <a href="tel:${h.phone}" class="text-green-600 font-semibold block mt-2 hover:underline">📞 ${h.phone}</a>`;
+        list.appendChild(card);
+      });
+    }
+
+    renderHospitals();
+  </script>
+</body>
+</html>

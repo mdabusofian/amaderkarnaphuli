@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>সরকারি সেবা — উপজেলা লোকাল ডিরেক্টরি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {font-family: 'Noto Sans Bengali', sans-serif;}
+    .card-gradient {
+      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    }
+    .header-bg {
+        background: linear-gradient(to right, #2a4365, #1e3a8a);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-slate-800 min-h-screen flex flex-col">
+  
+  <header class="header-bg text-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold flex items-center gap-2">🔗 সরকারি সেবা পোর্টাল</h1>
+      <a href="index.html" class="text-sm underline hover:text-yellow-300 transition">⬅ হোমে ফিরুন</a>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-10">
+    <h2 class="text-4xl font-extrabold mb-4 text-center text-gray-800">অনলাইন সেবা পোর্টালসমূহ</h2>
+    <p class="text-center text-slate-600 max-w-3xl mx-auto mb-10">নিচের লিংকগুলোতে ক্লিক করে সরকারি বিভিন্ন সেবার জন্য সরাসরি আবেদন করতে পারবেন।</p>
+
+    <div id="serviceList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      </div>
+    
+    <div id="noResults" class="hidden text-center text-lg text-slate-500 mt-10">
+      কোনো ফলাফল পাওয়া যায়নি।
+    </div>
+
+  </main>
+
+  <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
+    <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — সরকারি সেবা</p>
+  </footer>
+
+  <script>
+    const governmentServices = [
+      { 
+        name: 'উপজেলা পোর্টাল',
+        description: 'উপজেলার সকল তথ্য, খবর এবং যোগাযোগ পেতে অফিসিয়াল পোর্টালে ভিজিট করুন।',
+        link: 'https://karnaphuli.chittagong.gov.bd/' // এখানে আপনার উপজেলার ওয়েবসাইটের লিংক দিন
+      },
+      { 
+        name: 'জাতীয় পরিচয়পত্র (NID)', 
+        description: 'নতুন NID কার্ডের জন্য আবেদন অথবা তথ্য সংশোধনের জন্য এই পোর্টালে যান।', 
+        link: 'https://services.nidw.gov.bd' 
+      },
+      { 
+        name: 'জন্ম ও মৃত্যু নিবন্ধন', 
+        description: 'অনলাইনে জন্ম নিবন্ধন অথবা মৃত্যু নিবন্ধনের জন্য আবেদন করুন।', 
+        link: 'https://bdris.gov.bd' 
+      },
+      { 
+        name: 'ই-পাসপোর্ট আবেদন', 
+        description: 'ই-পাসপোর্টের জন্য অনলাইনে আবেদন করতে এই লিংকে ক্লিক করুন।', 
+        link: 'https://www.epassport.gov.bd' 
+      },
+      { 
+        name: 'ভূমি উন্নয়ন কর (খাজনা)', 
+        description: 'অনলাইনে ভূমি উন্নয়ন কর (খাজনা) পরিশোধ করুন।', 
+        link: 'https://ldtax.gov.bd' 
+      },
+      { 
+        name: 'অনলাইন পুলিশ ক্লিয়ারেন্স', 
+        description: 'পুলিশ ক্লিয়ারেন্স সার্টিফিকেটের জন্য অনলাইনে আবেদন করুন।', 
+        link: 'https://pcc.police.gov.bd' 
+      },
+      { 
+        name: 'ড্রাইভিং লাইসেন্স', 
+        description: 'ড্রাইভিং লাইসেন্সের জন্য অনলাইনে আবেদন করুন।', 
+        link: 'https://bsp.brta.gov.bd' 
+      },
+      { 
+        name: 'অনলাইন ট্যাক্স ও টিন', 
+        description: 'অনলাইনে ট্যাক্স সংক্রান্ত সেবা ও টিআইএন নিবন্ধনের জন্য আবেদন করুন।', 
+        link: 'https://incometax.gov.bd' 
+      },
+      { 
+        name: 'পাবলিক পরীক্ষার ফলাফল', 
+        description: 'এসএসসি, এইচএসসি সহ সকল পাবলিক পরীক্ষার ফলাফল দেখুন।', 
+        link: 'https://eboardresults.com' 
+      },
+      {
+        name: 'সরকারি চাকরির আবেদন (e-Application)',
+        description: 'সরকারি চাকরির জন্য অনলাইনে আবেদন করতে এই লিংকে যান।',
+        link: 'https://erecruitment.gov.bd/'
+      }
+      // আপনি আপনার প্রয়োজন অনুযায়ী আরও লিংক এখানে যুক্ত করতে পারেন
+    ];
+
+    const list = document.getElementById('serviceList');
+    const noResultsMessage = document.getElementById('noResults');
+
+    function renderServices() {
+      list.innerHTML = '';
+      if (governmentServices.length === 0) {
+        noResultsMessage.classList.remove('hidden');
+      } else {
+        noResultsMessage.classList.add('hidden');
+        governmentServices.forEach(service => {
+          const card = document.createElement('div');
+          card.className = 'card-gradient rounded-xl shadow-md p-6 border border-blue-100 transition-all duration-300 card-hover flex flex-col';
+          card.innerHTML = `
+            <div class="flex items-center gap-3 mb-4">
+              <span class="text-4xl text-blue-600">
+                <i class="fas fa-link"></i>
+              </span>
+              <h3 class="text-xl font-bold text-gray-800">${service.name}</h3>
+            </div>
+            <p class="text-sm text-gray-600 mb-4 flex-grow">${service.description}</p>
+            <div class="mt-auto text-center">
+              <a href="${service.link}" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300">
+                <i class="fas fa-external-link-alt mr-2"></i> আবেদন করুন
+              </a>
+            </div>
+          `;
+          list.appendChild(card);
+        });
+      }
+    }
+
+    // Initial render
+    renderServices();
+  </script>
+</body>
+</html>

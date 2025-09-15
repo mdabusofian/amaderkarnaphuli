@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>রক্ত দাতা — উপজেলা লোকাল ডিরেক্টরি</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {font-family: 'Noto Sans Bengali', sans-serif;}
+    .filter-card, .list-header {
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-red-50 via-white to-red-50 text-slate-800 min-h-screen flex flex-col">
+  
+  <header class="bg-red-600 text-white shadow-lg">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold flex items-center gap-2">🩸 রক্ত দাতা</h1>
+      <a href="index.html" class="text-sm underline hover:text-yellow-300">⬅ হোমে ফিরুন</a>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-10">
+    <h2 class="text-3xl font-bold mb-6 text-center">উপজেলার রক্ত দাতার তালিকা</h2>
+    <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">রক্তের গ্রুপের পাশাপাশি নাম, ফোন বা এলাকা দিয়ে সহজেই রক্ত দাতা খুঁজে নিন।</p>
+
+    <div class="filter-card bg-white p-6 rounded-lg mb-8 flex flex-col md:flex-row items-center gap-4">
+      <div class="w-full md:w-auto">
+        <label for="group-filter" class="block text-sm font-medium text-gray-700 mb-1">গ্রুপ</label>
+        <select id="group-filter" class="w-full md:w-32 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500">
+          <option value="all">সব</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+        </select>
+      </div>
+
+      <div class="w-full md:w-auto">
+        <label for="area-filter" class="block text-sm font-medium text-gray-700 mb-1">এলাকা</label>
+        <select id="area-filter" class="w-full md:w-48 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500">
+          <option value="all">সকল এলাকা</option>
+          <option value="শিকলবাহা">শিকলবাহা</option>
+          <option value="বড়উঠান">বড়উঠান</option>
+          <option value="চরপাথরঘাটা">চরপাথরঘাটা</option>
+          <option value="জুলধা">জুলধা</option>
+          <option value="চরলক্ষ্যা">চরলক্ষ্যা</option>
+        </select>
+      </div>
+      
+      <div class="flex-grow w-full md:w-auto">
+        <label for="search-input" class="block text-sm font-medium text-gray-700 mb-1">নাম/ফোন</label>
+        <input type="text" id="search-input" placeholder="নাম বা ফোন নম্বর দিয়ে খুঁজুন" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500">
+      </div>
+
+      <div class="w-full md:w-auto pt-4 md:pt-0">
+        <button id="reset-btn" class="w-full md:w-auto bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-600 transition">রিসেট</button>
+      </div>
+    </div>
+
+    <div class="list-container bg-white rounded-lg shadow-md overflow-hidden">
+      <div class="list-header hidden md:grid grid-cols-5 bg-red-600 text-white font-semibold p-4">
+        <div>নাম</div>
+        <div>গ্রুপ</div>
+        <div>ফোন</div>
+        <div>এলাকা</div>
+        <div>শেষ ডোনেশন</div>
+      </div>
+      
+      <div id="donor-list" class="divide-y divide-gray-200">
+        </div>
+      
+      <div id="no-results" class="hidden text-center py-8 text-gray-500">
+        কোনো ফলাফল পাওয়া যায়নি।
+      </div>
+    </div>
+  </main>
+
+  <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
+    <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — রক্ত দাতা</p>
+  </footer>
+
+  <script>
+    const donorData = [
+      { name: 'ফরিদ হোসেন', group: 'O+', phone: '01812-000000', area: 'শিকলবাহা', lastDonation: '2025-06-01' },
+      { name: 'তাসনিম আহমেদ', group: 'B+', phone: '01711-000000', area: 'বড়উঠান', lastDonation: '2025-07-10' },
+      { name: 'সাব্বির আহমেদ', group: 'A-', phone: '01618-000000', area: 'চরপাথরঘাটা', lastDonation: '2025-05-18' },
+      { name: 'শারমিন আক্তার', group: 'AB+', phone: '01919-000000', area: 'শিকলবাহা', lastDonation: '2025-04-22' },
+      { name: 'তানভীর রহমান', group: 'O-', phone: '01313-000000', area: 'বড়উঠান', lastDonation: '2025-08-05' },
+      { name: 'নাঈম হাসান', group: 'A+', phone: '01515-000000', area: 'জুলধা', lastDonation: '2025-03-12' },
+      { name: 'শামীমুল ইসলাম', group: 'O+', phone: '01812-000101', area: 'চরলক্ষ্যা', lastDonation: '2025-07-25' },
+      { name: 'ফাতেমা বেগম', group: 'B-', phone: '01711-000102', area: 'শিকলবাহা', lastDonation: '2025-06-30' },
+      { name: 'মো. আবুল কাশেম', group: 'O-', phone: '01618-000103', area: 'বড়উঠান', lastDonation: '2025-04-01' },
+      { name: 'দিদারুল ইসলাম', group: 'AB-', phone: '01919-000104', area: 'চরপাথরঘাটা', lastDonation: '2025-08-20' },
+    ];
+
+    const groupFilter = document.getElementById('group-filter');
+    const areaFilter = document.getElementById('area-filter');
+    const searchInput = document.getElementById('search-input');
+    const resetBtn = document.getElementById('reset-btn');
+    const donorList = document.getElementById('donor-list');
+    const noResults = document.getElementById('no-results');
+
+    function renderDonors(data) {
+      donorList.innerHTML = '';
+      if (data.length === 0) {
+        noResults.classList.remove('hidden');
+        return;
+      }
+      noResults.classList.add('hidden');
+      data.forEach(donor => {
+        const row = document.createElement('div');
+        row.className = 'grid grid-cols-1 md:grid-cols-5 gap-4 p-4 md:p-5 hover:bg-gray-100 transition-colors cursor-pointer';
+        row.innerHTML = `
+          <div class="font-semibold text-lg md:text-base">${donor.name}</div>
+          <div class="font-bold text-red-600">${donor.group}</div>
+          <div><a href="tel:${donor.phone}" class="text-blue-600 hover:underline">${donor.phone}</a></div>
+          <div>${donor.area}</div>
+          <div>${donor.lastDonation}</div>
+        `;
+        donorList.appendChild(row);
+      });
+    }
+
+    function filterAndRender() {
+      const selectedGroup = groupFilter.value;
+      const selectedArea = areaFilter.value;
+      const searchQuery = searchInput.value.toLowerCase();
+
+      const filteredData = donorData.filter(donor => {
+        const matchesGroup = selectedGroup === 'all' || donor.group === selectedGroup;
+        const matchesArea = selectedArea === 'all' || donor.area === selectedArea;
+        const matchesSearch = donor.name.toLowerCase().includes(searchQuery) || donor.phone.includes(searchQuery);
+        
+        return matchesGroup && matchesArea && matchesSearch;
+      });
+
+      renderDonors(filteredData);
+    }
+
+    function resetFilters() {
+      groupFilter.value = 'all';
+      areaFilter.value = 'all';
+      searchInput.value = '';
+      filterAndRender();
+    }
+
+    groupFilter.addEventListener('change', filterAndRender);
+    areaFilter.addEventListener('change', filterAndRender);
+    searchInput.addEventListener('input', filterAndRender);
+    resetBtn.addEventListener('click', resetFilters);
+
+    // Initial render
+    renderDonors(donorData);
+  </script>
+</body>
+</html>
