@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>টিউশন জব বোর্ড</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+    }
+    .section-title {
+      position: relative;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      height: 4px;
+      width: 60px;
+      background-color: #4c1d95; /* violet-700 */
+      border-radius: 999px;
+    }
+    .card {
+      background-color: #ffffff;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      border-radius: 1rem;
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    .submit-btn {
+        background-color: #6d28d9; /* violet-700 */
+        transition: background-color 0.3s ease;
+    }
+    .submit-btn:hover {
+        background-color: #5b21b6; /* violet-800 */
+    }
+    .tutor-card-body {
+        position: relative;
+    }
+    .tutor-card-body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 6px;
+        background-color: #6d28d9;
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+  
+  <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white shadow-xl sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
+      <h1 class="text-2xl font-bold flex items-center gap-2">👨‍🏫 টিউশন জব বোর্ড</h1>
+      <nav class="mt-4 sm:mt-0">
+        <ul class="flex flex-wrap justify-center gap-4 text-sm font-medium">
+          <li><a href="#find-tutor" class="hover:underline">শিক্ষক খুঁজুন</a></li>
+          <li><a href="#become-tutor" class="hover:underline">শিক্ষক হোন</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-1 container mx-auto px-6 py-10">
+
+    <section id="find-tutor" class="mb-12 pt-10">
+      <h2 class="text-3xl font-bold text-center section-title">শিক্ষক খুঁজুন</h2>
+      <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">আপনার প্রয়োজন অনুযায়ী এলাকা, বিষয় ও ক্লাস অনুযায়ী শিক্ষক খুঁজে নিন।</p>
+      
+      <div class="card p-6 rounded-xl mb-8 flex flex-col md:flex-row items-center gap-4">
+        <div class="w-full md:w-auto">
+          <label for="area-filter" class="block text-sm font-medium text-gray-700 mb-1">এলাকা</label>
+          <select id="area-filter" class="w-full md:w-48 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <option value="all">সকল এলাকা</option>
+            <option value="শিকলবাহা">শিকলবাহা</option>
+            <option value="বড়উঠান">বড়উঠান</option>
+            <option value="চরপাথরঘাটা">চরপাথরঘাটা</option>
+            <option value="জুলধা">জুলধা</option>
+            <option value="চরলক্ষ্যা">চরলক্ষ্যা</option>
+          </select>
+        </div>
+        <div class="w-full md:w-auto">
+          <label for="subject-filter" class="block text-sm font-medium text-gray-700 mb-1">বিষয়</label>
+          <select id="subject-filter" class="w-full md:w-32 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <option value="all">সব</option>
+            <option value="বিজ্ঞান">বিজ্ঞান</option>
+            <option value="বাণিজ্য">বাণিজ্য</option>
+            <option value="মানবিক">মানবিক</option>
+            <option value="গণিত">গণিত</option>
+          </select>
+        </div>
+        <div class="w-full md:w-auto">
+          <label for="class-filter" class="block text-sm font-medium text-gray-700 mb-1">ক্লাস</label>
+          <select id="class-filter" class="w-full md:w-32 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <option value="all">সব</option>
+            <option value="1-5">১-৫</option>
+            <option value="6-8">৬-৮</option>
+            <option value="9-10">৯-১০</option>
+            <option value="11-12">১১-১২</option>
+          </select>
+        </div>
+        <div class="flex-grow w-full md:w-auto">
+          <label for="search-input" class="block text-sm font-medium text-gray-700 mb-1">নাম খুঁজুন</label>
+          <input type="text" id="search-input" placeholder="শিক্ষকের নাম বা যোগ্যতা দিয়ে খুঁজুন" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        </div>
+        <div class="w-full md:w-auto pt-4 md:pt-0">
+          <button id="filter-btn" class="w-full md:w-auto bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition">খুঁজুন</button>
+        </div>
+      </div>
+
+      <div id="listing-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
+      <div id="no-results" class="hidden text-center py-8 text-gray-500">
+        কোনো শিক্ষক খুঁজে পাওয়া যায়নি।
+      </div>
+    </section>
+
+    <section id="become-tutor" class="mb-12 pt-10">
+      <h2 class="text-3xl font-bold text-center section-title">শিক্ষক হিসেবে আবেদন করুন</h2>
+      <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">আপনার যোগ্যতা এবং যোগাযোগের বিবরণ পূরণ করে এখানে তালিকাভুক্ত করুন।</p>
+
+      <div class="card p-6 rounded-xl max-w-2xl mx-auto">
+        <form id="listing-form" class="space-y-4">
+          <div>
+            <label for="tutor-name" class="block text-sm font-medium text-gray-700 mb-1">আপনার নাম</label>
+            <input type="text" id="tutor-name" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label for="tutor-phone" class="block text-sm font-medium text-gray-700 mb-1">যোগাযোগের ফোন নম্বর</label>
+            <input type="tel" id="tutor-phone" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label for="tutor-subject" class="block text-sm font-medium text-gray-700 mb-1">পড়াতে ইচ্ছুক বিষয়</label>
+            <input type="text" id="tutor-subject" placeholder="যেমন: গণিত, পদার্থবিজ্ঞান, বাংলা" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div class="flex gap-4">
+            <div class="w-1/2">
+                <label for="tutor-class" class="block text-sm font-medium text-gray-700 mb-1">যে ক্লাসগুলো পড়াতে পারবেন</label>
+                <input type="text" id="tutor-class" placeholder="যেমন: ক্লাস ১-৮, ৯ম-১০ম" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </div>
+            <div class="w-1/2">
+                <label for="tutor-area" class="block text-sm font-medium text-gray-700 mb-1">পড়াতে ইচ্ছুক এলাকা</label>
+                <select id="tutor-area" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                  <option value="শিকলবাহা">শিকলবাহা</option>
+                  <option value="বড়উঠান">বড়উঠান</option>
+                  <option value="চরপাথরঘাটা">চরপাথরঘাটা</option>
+                  <option value="জুলধা">জুলধা</option>
+                  <option value="চরলক্ষ্যা">চরলক্ষ্যা</option>
+                </select>
+            </div>
+          </div>
+          <div>
+            <label for="tutor-description" class="block text-sm font-medium text-gray-700 mb-1">আপনার সম্পর্কে কিছু লিখুন</label>
+            <textarea id="tutor-description" rows="4" placeholder="আপনার শিক্ষাগত যোগ্যতা, অভিজ্ঞতা এবং অন্যান্য প্রাসঙ্গিক তথ্য দিন।" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="submit-btn text-white font-semibold px-8 py-3 rounded-full hover:bg-indigo-700 transition">
+              <i class="fas fa-paper-plane"></i> তালিকাভুক্ত করুন
+            </button>
+          </div>
+        </form>
+        <div id="form-message" class="mt-4 text-center hidden"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="bg-gray-800 text-white py-6 text-center mt-auto">
+    <p class="text-sm">&copy; ২০২৫ টিউশন জব বোর্ড — সকল অধিকার সংরক্ষিত</p>
+  </footer>
+
+  <script>
+    // Sample data for tutor listings
+    const tutorListings = [
+      { id: 1, name: 'আলিফ আহমেদ', area: 'চরপাথরঘাটা', subject: 'বিজ্ঞান', class: '৯ম-১০ম', qualification: 'চট্টগ্রাম বিশ্ববিদ্যালয়, রসায়ন বিভাগ', phone: '01812-111111' },
+      { id: 2, name: 'নুসরাত জাহান', area: 'শিকলবাহা', subject: 'গণিত', class: '৬ষ্ঠ-৮ম', qualification: 'ইঞ্জিনিয়ারিং কলেজ, সিএসই', phone: '01711-222222' },
+      { id: 3, name: 'ফাহিম হাসান', area: 'বড়উঠান', subject: 'বাণিজ্য', class: '১১-১২', qualification: 'ঢাকা বিশ্ববিদ্যালয়, হিসাববিজ্ঞান বিভাগ', phone: '01618-333333' },
+      { id: 4, name: 'সাদিয়া রহমান', area: 'জুলধা', subject: 'বাংলা, ইংরেজি', class: '১-৫', qualification: 'বি.এ (সম্মান), বাংলা', phone: '01919-444444' },
+      { id: 5, name: 'রায়হান চৌধুরী', area: 'চরলক্ষ্যা', subject: 'পদার্থবিজ্ঞান, গণিত', class: '৯ম-১০ম', qualification: 'বুয়েট, ইইই', phone: '01313-555555' },
+    ];
+
+    const listingGrid = document.getElementById('listing-grid');
+    const areaFilter = document.getElementById('area-filter');
+    const subjectFilter = document.getElementById('subject-filter');
+    const classFilter = document.getElementById('class-filter');
+    const searchInput = document.getElementById('search-input');
+    const filterBtn = document.getElementById('filter-btn');
+    const noResults = document.getElementById('no-results');
+
+    function renderListings(data) {
+      listingGrid.innerHTML = '';
+      if (data.length === 0) {
+        noResults.classList.remove('hidden');
+        return;
+      }
+      noResults.classList.add('hidden');
+      data.forEach(listing => {
+        const card = document.createElement('div');
+        card.className = 'card p-6 rounded-xl tutor-card-body';
+        card.innerHTML = `
+          <div class="flex items-center gap-4">
+            <div class="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-user-tie text-3xl text-indigo-500"></i>
+            </div>
+            <div class="flex-grow">
+              <h3 class="text-xl font-bold text-indigo-700">${listing.name}</h3>
+              <p class="text-sm text-gray-500 mb-2">${listing.qualification}</p>
+            </div>
+          </div>
+          <div class="mt-4 border-t border-gray-200 pt-4">
+            <div class="flex items-center gap-2 mb-2">
+                <i class="fas fa-book-open text-indigo-500"></i>
+                <span class="text-sm">বিষয়: <span class="font-semibold">${listing.subject}</span></span>
+            </div>
+            <div class="flex items-center gap-2 mb-2">
+                <i class="fas fa-graduation-cap text-indigo-500"></i>
+                <span class="text-sm">ক্লাস: <span class="font-semibold">${listing.class}</span></span>
+            </div>
+            <div class="flex items-center gap-2">
+                <i class="fas fa-map-marker-alt text-indigo-500"></i>
+                <span class="text-sm">এলাকা: <span class="font-semibold">${listing.area}</span></span>
+            </div>
+          </div>
+          <div class="mt-4 text-center">
+            <a href="tel:${listing.phone}" class="bg-indigo-600 text-white font-semibold px-6 py-2 rounded-full hover:bg-indigo-700 transition flex items-center justify-center gap-2">
+              <i class="fas fa-phone-alt"></i> যোগাযোগ করুন
+            </a>
+          </div>
+        `;
+        listingGrid.appendChild(card);
+      });
+    }
+
+    function filterAndRender() {
+      const selectedArea = areaFilter.value;
+      const selectedSubject = subjectFilter.value;
+      const selectedClass = classFilter.value;
+      const searchQuery = searchInput.value.toLowerCase();
+
+      const filteredData = tutorListings.filter(tutor => {
+        const matchesArea = selectedArea === 'all' || tutor.area === selectedArea;
+        const matchesSubject = selectedSubject === 'all' || tutor.subject.includes(selectedSubject);
+        const matchesClass = selectedClass === 'all' || tutor.class.includes(selectedClass);
+        const matchesSearch = tutor.name.toLowerCase().includes(searchQuery) || 
+                              tutor.qualification.toLowerCase().includes(searchQuery);
+
+        return matchesArea && matchesSubject && matchesClass && matchesSearch;
+      });
+      renderListings(filteredData);
+    }
+    
+    // Initial render and event listeners
+    renderListings(tutorListings);
+    filterBtn.addEventListener('click', filterAndRender);
+    areaFilter.addEventListener('change', filterAndRender);
+    subjectFilter.addEventListener('change', filterAndRender);
+    classFilter.addEventListener('change', filterAndRender);
+    searchInput.addEventListener('input', filterAndRender);
+
+    // Form submission logic (for demonstration)
+    const form = document.getElementById('listing-form');
+    const formMessage = document.getElementById('form-message');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      formMessage.classList.remove('hidden');
+      formMessage.innerHTML = `<p class="text-green-500 font-semibold"><i class="fas fa-check-circle"></i> আপনার আবেদন সফলভাবে জমা হয়েছে।</p>`;
+      
+      form.reset();
+      setTimeout(() => {
+        formMessage.classList.add('hidden');
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
