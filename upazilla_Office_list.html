@@ -3,200 +3,98 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>সরকারি অফিসসমূহ — উপজেলা লোকাল ডিরেক্টরি</title>
+  <title>প্রোফাইল কার্ড</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    body {font-family: 'Noto Sans Bengali', sans-serif;}
-    .card-gradient {
-      background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
     }
-    .card-hover:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    .profile-card {
+      background-color: #ffffff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
     }
-    .header-bg {
-        background: linear-gradient(to right, #2a4365, #1e3a8a);
-    }
-    .search-input {
-      border: 1px solid #cbd5e1;
-      border-radius: 0.5rem;
-    }
-    .search-input:focus {
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    .profile-card:hover {
+      transform: translateY(-8px);
     }
     .profile-img-container {
-        width: 96px; /* Increased size for better visibility */
-        height: 96px; /* Increased size for better visibility */
-        border-radius: 50%;
-        overflow: hidden;
-        margin: 0 auto 1rem auto; /* Centered and added margin-bottom */
-        border: 3px solid #3b82f6; /* Blue border */
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #e0f2fe; /* Light blue background for fallback */
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 1rem;
+      border: 3px solid #10b981; /* Green border */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .profile-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     .profile-icon {
-        color: #3b82f6; /* Blue icon */
-        font-size: 3rem; /* Larger icon */
+      font-size: 3rem;
+      color: #9ca3af; /* Gray icon */
     }
   </style>
 </head>
-<body class="bg-gray-50 text-slate-800 min-h-screen flex flex-col">
-  
-  <header class="header-bg text-white shadow-lg">
-    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold flex items-center gap-2">🏛️ উপজেলা সরকারি অফিস</h1>
-      <a href="index.html" class="text-sm underline hover:text-yellow-300 transition">⬅ হোমে ফিরুন</a>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+  <div id="card-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
     </div>
-  </header>
-
-  <main class="flex-1 container mx-auto px-6 py-10">
-    <h2 class="text-4xl font-extrabold mb-4 text-center text-gray-800">সরকারি অফিসসমূহের ডিরেক্টরি</h2>
-    <p class="text-center text-slate-600 max-w-3xl mx-auto mb-10">উপজেলার সকল সরকারি অফিসের নাম, প্রধান, যোগাযোগের তথ্য এবং ওয়েবসাইট এখানে দেখুন।</p>
-
-    <div class="mb-8 p-6 bg-white rounded-xl shadow-lg border border-gray-200">
-      <div class="relative">
-        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-          <i class="fas fa-search text-gray-400"></i>
-        </div>
-        <input type="text" id="searchQuery" placeholder="অফিসের নাম বা প্রধানের নাম দিয়ে খুঁজুন..." class="search-input w-full pl-10 pr-4 py-2 text-gray-700">
-      </div>
-    </div>
-
-    <div id="officeList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      </div>
-    
-    <div id="noResults" class="hidden text-center text-lg text-slate-500 mt-10">
-      কোনো ফলাফল পাওয়া যায়নি।
-    </div>
-
-  </main>
-
-  <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
-    <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — সরকারি অফিস</p>
-  </footer>
 
   <script>
-    const governmentOffices = [
-      { 
-        name: 'উপজেলা নির্বাহী অফিসারের কার্যালয়', 
-        head: 'জনাব সজীব কান্তি রুদ্র (ইউএনও)', 
-        phone: '+8801733-334342',
-        email: 'unokarnafuli@mopa.gov.bd', 
-        website: 'https://karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://images.unsplash.com/photo-1507003211169-e69fe2547c1f?q=80&w=1770&auto=format&fit=crop' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+    const profiles = [
+      {
+        name: 'সাকিব আহমেদ',
+        title: 'প্রকল্প ব্যবস্থাপক',
+        imageUrl: 'https://images.unsplash.com/photo-1507003211169-e69fe2547c1f?q=80&w=1770&auto=format&fit=crop'
       },
-      { 
-        name: 'উপজেলা কৃষি অফিস', 
-        head: 'ড. রুহুল আমিন (উপজেলা কৃষি অফিসার)', 
-        phone: '+8801700023456', 
-        email: 'agriculture.karnaphuli@example.com', 
-        website: '',
-        imageUrl: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+      {
+        name: 'ফারহানা ইসলাম',
+        title: 'সফটওয়্যার প্রকৌশলী',
+        imageUrl: 'https://images.unsplash.com/photo-1534528736945-bddb0889246d?q=80&w=1776&auto=format&fit=crop'
       },
-      { 
-        name: 'উপজেলা স্বাস্থ্য কমপ্লেক্স', 
-        head: 'ডা. সানজিদা ইসলাম (উপজেলা স্বাস্থ্য ও প.প. কর্মকর্তা)', 
-        phone: '+8801700034567', 
-        email: 'health.karnaphuli@example.com', 
-        website: '',
-        imageUrl: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1770&auto=format&fit=crop' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+      {
+        name: 'আশরাফুল হক',
+        title: 'কৃষিবিদ',
+        imageUrl: '' // No image, will show icon
       },
-      { 
-        name: 'উপজেলা মাধ্যমিক শিক্ষা অফিস', 
-        head: 'জনাব সাইফুর রহমান (উপজেলা মাধ্যমিক শিক্ষা অফিসার)', 
-        phone: '+8801700045678', 
-        email: 'education.karnaphuli@example.com', 
-        website: 'https://seokarnaphuli.gov.bd',
-        imageUrl: '' // এই ক্ষেত্রে কোনো ছবি নেই
+      {
+        name: 'নাসরিন আক্তার',
+        title: 'শিক্ষিকা',
+        imageUrl: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1770&auto=format&fit=crop'
       },
-      { 
-        name: 'উপজেলা সমাজসেবা অফিস', 
-        head: 'জনাব মারিয়া আক্তার (উপজেলা সমাজসেবা অফিসার)', 
-        phone: '+8801700056789', 
-        email: 'social.service.karnaphuli@example.com', 
-        website: '',
-        imageUrl: '' // এই ক্ষেত্রে কোনো ছবি নেই
-      },
-      { 
-        name: 'উপজেলা নির্বাচন অফিস', 
-        head: 'জনাব আরিফ উদ্দিন (উপজেলা নির্বাচন অফিসার)', 
-        phone: '+8801700067890', 
-        email: 'election.karnaphuli@example.com', 
-        website: '',
-        imageUrl: '' // এই ক্ষেত্রে কোনো ছবি নেই
-      },
-      { 
-        name: 'কর্ণফুলী থানা', 
-        head: 'জনাব মোহাম্মদ জহির হোসেন (পিপিএম বার)', 
-        phone: '০১৩২০-০৫২৯৭৪', 
-        email: 'occmp.kar@police.gov.bd', 
-        website: 'http://police.karnafuli.chittagong.gov.bd/',
-        imageUrl: '' // এই ক্ষেত্রে কোনো ছবি নেই
-      },
-      // আপনার উপজেলার তথ্য এখানে যুক্ত করুন
     ];
 
-    const list = document.getElementById('officeList');
-    const searchQueryInput = document.getElementById('searchQuery');
-    const noResultsMessage = document.getElementById('noResults');
+    const grid = document.getElementById('card-grid');
 
-    function renderOffices(filteredOffices) {
-      list.innerHTML = '';
-      if (filteredOffices.length === 0) {
-        noResultsMessage.classList.remove('hidden');
-      } else {
-        noResultsMessage.classList.add('hidden');
-        filteredOffices.forEach(office => {
-          const card = document.createElement('div');
-          card.className = 'card-gradient rounded-xl shadow-md p-6 border border-blue-100 text-center transition-all duration-300 card-hover';
-          card.innerHTML = `
-            <div class="profile-img-container">
-                ${office.imageUrl ? `<img src="${office.imageUrl}" alt="${office.head}" class="profile-img">` : `<i class="fas fa-user-circle profile-icon"></i>`}
-            </div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">${office.name}</h3>
-            <p class="text-md font-medium text-slate-700 mb-4">${office.head}</p>
-            <div class="space-y-3 text-sm text-gray-600">
-              ${office.phone ? `<p><i class="fas fa-phone-alt text-gray-500 mr-2"></i> <a href="tel:${office.phone}" class="hover:underline text-blue-600">${office.phone}</a></p>` : ''}
-              ${office.email ? `<p><i class="fas fa-envelope text-gray-500 mr-2"></i> <a href="mailto:${office.email}" class="hover:underline text-blue-600">${office.email}</a></p>` : ''}
-              ${office.website ? `<p><i class="fas fa-globe text-gray-500 mr-2"></i> <a href="${office.website}" target="_blank" class="hover:underline text-blue-600">${office.website}</a></p>` : ''}
-            </div>
-            <div class="mt-6 text-center">
-              ${office.website ? `<a href="${office.website}" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300">
-                <i class="fas fa-external-link-alt mr-2"></i> ওয়েবসাইট দেখুন
-              </a>` : ''}
-            </div>
-          `;
-          list.appendChild(card);
-        });
-      }
-    }
-
-    function filterAndRender(){
-      const query = searchQueryInput.value.toLowerCase();
-      
-      const filtered = governmentOffices.filter(office => {
-        const matchesQuery = office.name.toLowerCase().includes(query) || office.head.toLowerCase().includes(query);
-        return matchesQuery;
+    function renderProfiles() {
+      grid.innerHTML = '';
+      profiles.forEach(profile => {
+        const card = document.createElement('div');
+        card.className = 'profile-card';
+        
+        card.innerHTML = `
+          <div class="profile-img-container">
+            ${profile.imageUrl ? `<img src="${profile.imageUrl}" alt="${profile.name}" class="profile-img">` : `<i class="fas fa-user-circle profile-icon"></i>`}
+          </div>
+          <h3 class="text-xl font-bold text-gray-800 mb-1">${profile.name}</h3>
+          <p class="text-sm text-gray-500 mb-4">${profile.title}</p>
+          <a href="#" class="bg-emerald-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-emerald-600 transition">প্রোফাইল দেখুন</a>
+        `;
+        
+        grid.appendChild(card);
       });
-      
-      renderOffices(filtered);
     }
 
-    searchQueryInput.addEventListener('input', filterAndRender);
-
-    // Initial render
-    filterAndRender();
+    renderProfiles();
   </script>
 </body>
 </html>
