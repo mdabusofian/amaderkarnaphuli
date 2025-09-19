@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>অর্ধেকের দিন - মোবাইল ফ্রেন্ডলি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { font-family: 'Noto Sans Bengali', sans-serif; }
+        .card {
+            background-color: #fff;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 95%;
+            max-width: 900px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+        }
+        .modal.active .modal-content {
+            transform: translateY(0);
+        }
+        .tab-button.active {
+            background-color: #5b21b6;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-slate-800 min-h-screen flex flex-col">
+
+    <header class="bg-[#5b21b6] text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">👩‍❤️‍👨 অর্ধেকের দিন</h1>
+            <div class="space-x-4">
+                <a href="#" class="text-sm underline hover:text-yellow-300">লগইন</a>
+                <a href="#" class="text-sm underline hover:text-yellow-300">রেজিস্ট্রেশন</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1 container mx-auto px-4 sm:px-6 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg lg:h-fit lg:sticky lg:top-24">
+                <h3 class="text-xl font-bold mb-4">ফিল্টার</h3>
+                <div class="space-y-6">
+                    <div>
+                        <label for="gender" class="block text-sm font-medium text-gray-700">আমি খুঁজছি</label>
+                        <select id="gender" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
+                            <option value="পাত্রী">পাত্রী</option>
+                            <option value="পাত্র">পাত্র</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="maritalStatus" class="block text-sm font-medium text-gray-700">বৈবাহিক অবস্থা</label>
+                        <select id="maritalStatus" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
+                            <option value="">সব</option>
+                            <option value="অবিবাহিত">অবিবাহিত</option>
+                            <option value="বিবাহবিচ্ছেদ">বিবাহবিচ্ছেদ</option>
+                            <option value="বিধবা">বিধবা</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="address" class="block text-sm font-medium text-gray-700">ঠিকানা (জেলা)</label>
+                        <input type="text" id="address" placeholder="যেমন: ঢাকা" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
+                    </div>
+                    <div>
+                        <label for="profession" class="block text-sm font-medium text-gray-700">পেশা</label>
+                        <input type="text" id="profession" placeholder="যেমন: ডাক্তার" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-purple-300 focus:ring focus:ring-purple-200 focus:ring-opacity-50">
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <button id="search-button" class="w-full px-6 py-3 bg-[#5b21b6] text-white font-semibold rounded-full hover:bg-purple-700 transition">
+                        অনুসন্ধান করুন
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-3">
+                <section class="bg-white p-6 rounded-xl shadow-lg mb-8 text-center">
+                    <h2 class="text-2xl font-bold text-[#5b21b6] mb-3">আপনার জন্য সেরা সঙ্গী খুঁজুন</h2>
+                    <p class="text-gray-600 mb-4">আমাদের উন্নত অ্যালগরিদম ব্যবহার করে আপনার জন্য সবচেয়ে উপযুক্ত প্রোফাইলটি খুঁজে নিন।</p>
+                    <button onclick="findMyMatch()" class="px-8 py-3 bg-[#e879f9] text-[#5b21b6] font-bold rounded-full hover:bg-[#d946ef] hover:text-white transition-colors">
+                        <i class="fas fa-magic mr-2"></i> আমার জন্য ম্যাচ খুঁজুন
+                    </button>
+                    <div id="match-result" class="mt-4 text-green-600 font-semibold"></div>
+                </section>
+
+                <section id="results-section">
+                    <h3 class="text-2xl font-semibold mb-6">অনুসন্ধান ফলাফল</h3>
+                    <div id="profiles-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+                        </div>
+                    <div id="no-results" class="hidden text-center text-lg text-gray-500 mt-10">
+                        আপনার অনুসন্ধানের সাথে কোনো প্রোফাইল মেলেনি।
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <section class="mt-12">
+            <h2 class="text-3xl font-bold text-center text-[#5b21b6] mb-8">সাফল্যের গল্প</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="card p-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1517487823521-b0625d6de6d6?q=80&w=1770&auto=format&fit=crop" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-pink-400">
+                    <h4 class="font-bold text-lg mb-1">সাদিয়া ও সাজিদ</h4>
+                    <p class="text-sm text-gray-600">"অর্ধেকের দিন আমাদের জীবনকে নতুন করে সাজিয়ে দিয়েছে। আমরা একে অপরের জন্য নিখুঁত সঙ্গী।"</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1616782299723-01c5188f8d9b?q=80&w=1770&auto=format&fit=crop" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-pink-400">
+                    <h4 class="font-bold text-lg mb-1">রেহানা ও রাকিব</h4>
+                    <p class="text-sm text-gray-600">"আমরা এক বছরেরও বেশি সময় ধরে বিবাহিত এবং খুবই খুশি। সবকিছুর জন্য অর্ধেকের দিন-কে ধন্যবাদ!"</p>
+                </div>
+                <div class="card p-6 text-center">
+                    <img src="https://images.unsplash.com/photo-1629851722839-49774578b776?q=80&w=1770&auto=format&fit=crop" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-pink-400">
+                    <h4 class="font-bold text-lg mb-1">তানিয়া ও তুষার</h4>
+                    <p class="text-sm text-gray-600">"সঠিক মানুষের খোঁজ পাওয়া যে এত সহজ হবে তা কখনো ভাবিনি। অর্ধেকের দিন-এর সার্ভিস অসাধারণ।"</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <h3 class="text-2xl font-bold text-center mb-4 text-[#5b21b6]">শর্তাবলী ও নিয়মাবলী</h3>
+            <p class="text-sm text-gray-600 mb-4">বায়োডাটা দেখার আগে অনুগ্রহ করে নিম্নলিখিত শর্তাবলী মনোযোগ সহকারে পড়ুন এবং সম্মত হন।</p>
+            <ol class="list-decimal list-inside space-y-2 text-sm text-gray-700">
+                <li>এই ওয়েবসাইটের সকল তথ্য শুধুমাত্র বিবাহের উদ্দেশ্যে ব্যবহার করা যাবে।</li>
+                <li>কোনো ধরনের অবৈধ, অসামাজিক বা বাণিজ্যিক উদ্দেশ্যে তথ্য ব্যবহার করা সম্পূর্ণ নিষিদ্ধ।</li>
+                <li>প্রোফাইল দেখার জন্য যে ফি প্রদান করা হবে, তা কোনো অবস্থাতেই ফেরতযোগ্য নয়।</li>
+                <li>এই প্ল্যাটফর্মে প্রদর্শিত তথ্যের সত্যতা যাচাই করার সম্পূর্ণ দায়িত্ব ব্যবহারকারীর।</li>
+                <li>আপনার প্রদত্ত ব্যক্তিগত তথ্যের গোপনীয়তা রক্ষা করা আমাদের দায়িত্ব।</li>
+            </ol>
+            <div class="mt-6 flex justify-center space-x-4">
+                <button onclick="closeTermsModal()" class="px-6 py-2 bg-gray-300 text-gray-800 rounded-full font-semibold hover:bg-gray-400 transition">
+                    ফিরে যান
+                </button>
+                <button id="terms-agree-button" class="px-6 py-2 bg-green-600 text-white rounded-full font-semibold hover:bg-green-700 transition">
+                    আমি সম্মত
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="modal">
+        <div class="modal-content text-center">
+            <h4 class="text-2xl font-bold mb-4 text-[#5b21b6]">ফি পরিশোধ করুন</h4>
+            <p class="text-sm text-gray-600 mb-4">বিস্তারিত বায়োডাটা দেখতে নিচের বাটনে ক্লিক করে স্বয়ংক্রিয় পেমেন্ট সম্পন্ন করুন।</p>
+            <button id="auto-pay-button" class="w-full px-6 py-3 bg-[#5b21b6] text-white rounded-full font-semibold hover:bg-purple-700 transition">
+                <i class="fas fa-mobile-alt mr-2"></i> পেমেন্ট করে বায়োডাটা দেখুন
+            </button>
+            <div id="payment-status" class="mt-4 text-sm font-semibold"></div>
+        </div>
+    </div>
+
+    <div id="biodata-modal" class="modal">
+        <div class="modal-content relative">
+            <button class="absolute top-3 right-3 text-gray-500 hover:text-gray-800" onclick="closeBiodataModal()">
+                <i class="fas fa-times-circle text-2xl"></i>
+            </button>
+            <div id="profile-details-content"></div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white py-6 text-center mt-auto">
+        <p class="text-sm">&copy; ২০২৫ অর্ধেকের দিন — সকল অধিকার সংরক্ষিত</p>
+    </footer>
+
+    <script>
+        const allProfiles = [
+            { id: 1, bioId: 'ODM-21134', type: 'পাত্রী', name: 'তাসনিম ইসলাম', age: 26, dob: 'ফেব্রুয়ারি, ১৯৯৯', profession: 'শিক্ষিকা', education: 'মাস্টার্স', maritalStatus: 'অবিবাহিত', siblings: '১ ভাই, ১ বোন', complexion: 'ফর্সা', looks: 'আকর্ষণীয়', height: 63, weight: 55, address: 'ঢাকা', bio: 'তাসনিম একজন সহজ-সরল এবং ধার্মিক মেয়ে।', contact: '01712-123456', photo: 'https://images.unsplash.com/photo-1596702958349-2d184a4a8934?q=80&w=1770&auto=format&fit=crop', fatherStatus: 'জীবিত', fatherProfession: 'ব্যবসায়ী', motherStatus: 'জীবিত', motherProfession: 'গৃহিণী', siblingsDetails: [{relation: 'ভাই', maritalStatus: 'বিবাহিত', profession: 'প্রকৌশলী'}, {relation: 'বোন', maritalStatus: 'অবিবাহিত', profession: 'ছাত্রী'}] },
+            { id: 2, bioId: 'ODF-45678', type: 'পাত্র', name: 'আরিফ আহমেদ', age: 30, dob: 'মার্চ, ১৯৯৫', profession: 'ব্যাংকার', education: 'এমবিএ', maritalStatus: 'অবিবাহিত', siblings: '২ ভাই', complexion: 'উজ্জ্বল শ্যামলা', looks: 'সাধারণ', height: 68, weight: 70, address: 'চট্টগ্রাম', bio: 'আরিফ একজন কর্মঠ এবং দায়িত্বশীল ছেলে।', contact: '01812-987654', photo: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop', fatherStatus: 'মৃত', fatherProfession: 'ডাক্তার', motherStatus: 'জীবিত', motherProfession: 'গৃহিণী', siblingsDetails: [{relation: 'বড় ভাই', maritalStatus: 'বিবাহিত', profession: 'সরকারি কর্মকর্তা'}, {relation: 'ছোট ভাই', maritalStatus: 'অবিবাহিত', profession: 'ব্যবসায়ী'}] },
+            { id: 3, bioId: 'ODF-22520', type: 'পাত্রী', name: 'নুসরাত জাহান', age: 24, dob: 'জানুয়ারি, ২০০১', profession: 'ডাক্তার', education: 'এমবিবিএস', maritalStatus: 'অবিবাহিত', siblings: '১ বোন', complexion: 'ফর্সা', looks: 'খুব সুন্দর', height: 64, weight: 58, address: 'সিলেট', bio: 'নুসরাত একজন মিশুক এবং বুদ্ধিমতী মেয়ে।', contact: '01919-567890', photo: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1770&auto=format&fit=crop', fatherStatus: 'জীবিত', fatherProfession: 'প্রকৌশলী', motherStatus: 'জীবিত', motherProfession: 'শিক্ষিকা', siblingsDetails: [{relation: 'বোন', maritalStatus: 'অবিবাহিত', profession: 'ছাত্রী'}] },
+            { id: 4, bioId: 'ODF-17883', type: 'পাত্র', name: 'রাকিব হাসান', age: 28, dob: 'জুন, ১৯৯৭', profession: 'প্রকৌশলী', education: 'বিএসসি', maritalStatus: 'অবিবাহিত', siblings: '২ বোন', complexion: 'শ্যামলা', looks: 'সাধারণ', height: 70, weight: 75, address: 'ঢাকা', bio: 'রাকিব একজন বিনয়ী এবং সৃজনশীল প্রকৌশলী।', contact: '01313-112233', photo: 'https://images.unsplash.com/photo-1522075469750-c836fe38203f?q=80&w=1770&auto=format&fit=crop', fatherStatus: 'জীবিত', fatherProfession: 'ব্যবসায়ী', motherStatus: 'মৃত', siblingsDetails: [{relation: 'বড় বোন', maritalStatus: 'বিবাহিত', profession: 'গৃহিণী'}, {relation: 'ছোট বোন', maritalStatus: 'অবিবাহিত', profession: 'ডাক্তার'}] },
+            { id: 5, bioId: 'ODF-18704', type: 'পাত্রী', name: 'ফারজানা আক্তার', age: 32, dob: 'এপ্রিল, ১৯৯৩', profession: 'ব্যবসায়ী', education: 'এমবিএ', maritalStatus: 'বিবাহবিচ্ছেদ', siblings: 'কোনো ভাইবোন নেই', complexion: 'ফর্সা', looks: 'আকর্ষণীয়', height: 62, weight: 52, address: 'খুলনা', bio: 'ফারজানা একজন উদ্যমী ব্যবসায়ী।', contact: '01700-111111', photo: 'https://images.unsplash.com/photo-1610444547285-b98583487f54?q=80&w=1770&auto=format&fit=crop', fatherStatus: 'জীবিত', fatherProfession: 'ব্যাংকার', motherStatus: 'জীবিত', motherProfession: 'গৃহিণী', siblingsDetails: [] },
+            { id: 6, bioId: 'ODF-20540', type: 'পাত্র', name: 'আমিনুল হক', age: 45, dob: 'আগস্ট, ১৯৮০', profession: 'সরকারি কর্মকর্তা', education: 'মাস্টার্স', maritalStatus: 'বিধবা', siblings: '২ ভাই, ১ বোন', complexion: 'শ্যামলা', looks: 'সাধারণ', height: 67, weight: 72, address: 'সিলেট', bio: 'আমিনুল একজন দায়িত্বশীল সরকারি কর্মকর্তা।', contact: '01715-112233', photo: 'https://images.unsplash.com/photo-1610444547285-b98583487f54?q=80&w=1770&auto=format&fit=crop', fatherStatus: 'মৃত', motherStatus: 'জীবিত', motherProfession: 'গৃহিণী', siblingsDetails: [{relation: 'ভাই', maritalStatus: 'বিবাহিত', profession: 'ব্যবসায়ী'}, {relation: 'ভাই', maritalStatus: 'বিবাহিত', profession: 'শিক্ষক'}, {relation: 'বোন', maritalStatus: 'বিবাহিত', profession: 'গৃহিণী'}] }
+        ];
+        
+        let currentProfileId = null;
+
+        function findMyMatch() {
+            document.getElementById('match-result').innerHTML = `<i class="fas fa-search animate-bounce mr-2"></i> আপনার জন্য সেরা সঙ্গী খোঁজা হচ্ছে...`;
+            setTimeout(() => {
+                const randomId = Math.floor(Math.random() * allProfiles.length) + 1;
+                const profile = allProfiles.find(p => p.id === randomId);
+                const matchResultHtml = `
+                    <p class="text-xl font-bold mt-4 text-[#5b21b6]">অভিনন্দন! আমরা আপনার জন্য একটি সেরা ম্যাচ খুঁজে পেয়েছি:</p>
+                    <div class="card p-4 mt-4 inline-block">
+                        <img src="${profile.photo}" alt="${profile.name}" class="w-20 h-20 object-cover rounded-full mx-auto">
+                        <p class="text-md font-semibold mt-2">${profile.name} (${profile.age})</p>
+                        <p class="text-sm text-gray-500">${profile.address}</p>
+                        <button onclick="openBiodataModal(${profile.id})" class="mt-2 text-sm text-[#5b21b6] hover:underline">বিস্তারিত দেখুন</button>
+                    </div>
+                `;
+                document.getElementById('match-result').innerHTML = matchResultHtml;
+            }, 2000);
+        }
+
+        document.getElementById('search-button').addEventListener('click', () => {
+            filterAndRenderProfiles();
+        });
+
+        function openBiodataModal(id) {
+            currentProfileId = id;
+            document.getElementById('terms-modal').classList.add('active');
+        }
+
+        document.getElementById('terms-agree-button').addEventListener('click', () => {
+            closeTermsModal();
+            openPaymentModal();
+        });
+
+        document.getElementById('auto-pay-button').addEventListener('click', () => {
+            simulatePayment();
+        });
+
+        function closeTermsModal() {
+            document.getElementById('terms-modal').classList.remove('active');
+        }
+
+        function closeBiodataModal() {
+            document.getElementById('biodata-modal').classList.remove('active');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('payment-modal').classList.remove('active');
+        }
+
+        function filterAndRenderProfiles() {
+            const gender = document.getElementById('gender').value;
+            const maritalStatus = document.getElementById('maritalStatus').value;
+            const address = document.getElementById('address').value.toLowerCase();
+            const profession = document.getElementById('profession').value.toLowerCase();
+
+            const filteredProfiles = allProfiles.filter(profile => {
+                const matchesGender = profile.type === gender;
+                const matchesMaritalStatus = maritalStatus === '' || profile.maritalStatus === maritalStatus;
+                const matchesAddress = address === '' || profile.address.toLowerCase().includes(address);
+                const matchesProfession = profession === '' || profile.profession.toLowerCase().includes(profession);
+                return matchesGender && matchesMaritalStatus && matchesAddress && matchesProfession;
+            });
+
+            renderProfiles(filteredProfiles);
+        }
+
+        function renderProfiles(profilesToRender) {
+            const profilesGrid = document.getElementById('profiles-grid');
+            const noResultsMessage = document.getElementById('no-results');
+            profilesGrid.innerHTML = '';
+            if (profilesToRender.length === 0) {
+                noResultsMessage.classList.remove('hidden');
+            } else {
+                noResultsMessage.classList.add('hidden');
+            }
+
+            profilesToRender.forEach(profile => {
+                const card = document.createElement('div');
+                card.className = 'card p-4 text-center cursor-pointer';
+                card.innerHTML = `
+                    <div class="flex items-center justify-center mb-2">
+                        <img src="${profile.photo}" alt="${profile.name}" class="w-20 h-20 object-cover rounded-full">
+                    </div>
+                    <div class="text-xs text-gray-400 font-medium mb-1">বায়োডাটা নং: ${profile.bioId}</div>
+                    <h3 class="text-lg font-bold text-gray-700">${profile.name}</h3>
+                    <div class="space-y-1 text-sm text-gray-500">
+                        <p>বয়স: ${profile.age}</p>
+                        <p>উচ্চতা: ${Math.floor(profile.height/12)}'${profile.height%12}"</p>
+                        <p>পেশা: ${profile.profession}</p>
+                    </div>
+                    <div class="flex justify-between mt-4">
+                        <button onclick="openBiodataModal(${profile.id})" class="flex-1 mr-2 bg-[#5b21b6] text-white py-2 rounded-full font-semibold hover:bg-purple-700 transition-colors">
+                            বায়োডাটা
+                        </button>
+                        <button onclick="alert('শর্টলিস্ট করা হয়েছে')" class="bg-green-500 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors">
+                            <i class="fas fa-star"></i>
+                        </button>
+                        <button onclick="alert('ইগনোর করা হয়েছে')" class="bg-red-500 text-white w-10 h-10 rounded-full flex items-center justify-center ml-2 hover:bg-red-600 transition-colors">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+                profilesGrid.appendChild(card);
+            });
+        }
+
+        function openPaymentModal() {
+            document.getElementById('payment-modal').classList.add('active');
+            document.getElementById('payment-status').innerHTML = '';
+            document.getElementById('auto-pay-button').disabled = false;
+        }
+        
+        function simulatePayment() {
+            document.getElementById('payment-status').innerHTML = `<p class="text-blue-600 animate-pulse"><i class="fas fa-spinner fa-spin mr-2"></i> পেমেন্ট প্রক্রিয়া চলছে, অনুগ্রহ করে অপেক্ষা করুন...</p>`;
+            document.getElementById('auto-pay-button').disabled = true;
+
+            setTimeout(() => {
+                document.getElementById('payment-status').innerHTML = `<p class="text-green-600 font-semibold"><i class="fas fa-check-circle mr-2"></i> পেমেন্ট সফল হয়েছে! বায়োডাটা আনলক হচ্ছে...</p>`;
+                
+                setTimeout(() => {
+                    closePaymentModal();
+                    unlockDetails();
+                }, 1500);
+            }, 3000);
+        }
+
+        function unlockDetails() {
+            const profile = allProfiles.find(p => p.id === currentProfileId);
+            
+            let siblingDetailsHTML = '';
+            if (profile.siblingsDetails && profile.siblingsDetails.length > 0) {
+                siblingDetailsHTML = profile.siblingsDetails.map(sibling => `
+                    <p class="text-sm text-gray-700"><span class="font-semibold">${sibling.relation}:</span> ${sibling.maritalStatus || 'তথ্য নেই'}${sibling.profession ? `, পেশা: ${sibling.profession}` : ''}</p>
+                `).join('');
+            } else {
+                siblingDetailsHTML = `<p class="text-sm text-gray-700">কোনো ভাইবোন নেই।</p>`;
+            }
+
+            document.getElementById('profile-details-content').innerHTML = `
+                <div class="flex flex-col md:flex-row items-center md:items-start space-y-6 md:space-y-0 md:space-x-8 mb-8">
+                    <img src="${profile.photo}" alt="${profile.name}" class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-full border-4 border-[#5b21b6]">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-3xl font-bold text-[#5b21b6] mb-1">${profile.name}</h3>
+                        <p class="text-lg text-gray-600">বায়োডাটা নং: ${profile.bioId}</p>
+                        <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm mt-4 text-gray-700">
+                            <p><i class="fas fa-ring text-purple-400 mr-2"></i>বৈবাহিক অবস্থা: <span class="font-semibold">${profile.maritalStatus}</span></p>
+                            <p><i class="fas fa-calendar-alt text-purple-400 mr-2"></i>জন্ম: <span class="font-semibold">${profile.dob}</span></p>
+                            <p><i class="fas fa-ruler-vertical text-purple-400 mr-2"></i>উচ্চতা: <span class="font-semibold">${Math.floor(profile.height/12)}'${profile.height%12}"</span></p>
+                            <p><i class="fas fa-eye text-purple-400 mr-2"></i>গায়ের রঙ: <span class="font-semibold">${profile.complexion}</span></p>
+                            <p><i class="fas fa-weight-hanging text-purple-400 mr-2"></i>ওজন: <span class="font-semibold">${profile.weight} কেজি</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-inner">
+                    <div class="flex space-x-2 border-b border-gray-200 mb-4">
+                        <button class="tab-button active px-4 py-2 rounded-t-md text-sm" onclick="showTab('address-info')">ঠিকানা</button>
+                        <button class="tab-button px-4 py-2 rounded-t-md text-sm" onclick="showTab('education-info')">শিক্ষাগত যোগ্যতা</button>
+                        <button class="tab-button px-4 py-2 rounded-t-md text-sm" onclick="showTab('profession-info')">পেশাগত তথ্য</button>
+                        <button class="tab-button px-4 py-2 rounded-t-md text-sm" onclick="showTab('family-info')">পারিবারিক তথ্য</button>
+                        <button class="tab-button px-4 py-2 rounded-t-md text-sm" onclick="showTab('contact-info')">যোগাযোগ</button>
+                    </div>
+
+                    <div id="address-info" class="tab-content">
+                        <h4 class="text-lg font-semibold mb-2">ঠিকানা</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                            <p><span class="font-semibold">স্থায়ী ঠিকানা:</span> ${profile.address}</p>
+                            <p><span class="font-semibold">বর্তমান ঠিকানা:</span> ${profile.address}</p>
+                        </div>
+                    </div>
+
+                    <div id="education-info" class="tab-content hidden">
+                        <h4 class="text-lg font-semibold mb-2">শিক্ষাগত যোগ্যতা</h4>
+                        <p class="text-sm text-gray-700"><span class="font-semibold">সর্বোচ্চ ডিগ্রি:</span> ${profile.education}</p>
+                    </div>
+
+                    <div id="profession-info" class="tab-content hidden">
+                        <h4 class="text-lg font-semibold mb-2">পেশাগত তথ্য</h4>
+                        <p class="text-sm text-gray-700"><span class="font-semibold">পেশা:</span> ${profile.profession}</p>
+                    </div>
+
+                    <div id="family-info" class="tab-content hidden">
+                        <h4 class="text-lg font-semibold mb-2">পারিবারিক তথ্য</h4>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-700">
+                            <p><span class="font-semibold">পিতা কি জীবিত?:</span> ${profile.fatherStatus}</p>
+                            <p><span class="font-semibold">মাতা কি জীবিত?:</span> ${profile.motherStatus}</p>
+                            <p><span class="font-semibold">পিতার পেশা:</span> ${profile.fatherProfession || 'প্রদান করা হয়নি'}</p>
+                            <p><span class="font-semibold">মাতার পেশা:</span> ${profile.motherProfession || 'প্রদান করা হয়নি'}</p>
+                        </div>
+                        <h4 class="text-lg font-semibold mt-4 mb-2">ভাইবোনদের তথ্য</h4>
+                        ${siblingDetailsHTML}
+                    </div>
+
+                    <div id="contact-info" class="tab-content hidden">
+                        <h4 class="text-lg font-semibold mb-2 text-green-700">যোগাযোগের তথ্য (আনলকড)</h4>
+                        <p class="text-sm text-gray-700"><span class="font-semibold">ফোন:</span> <a href="tel:${profile.contact}" class="text-blue-600 hover:underline">${profile.contact}</a></p>
+                        <p class="text-sm text-gray-700"><span class="font-semibold">ইমেইল:</span> example@email.com</p>
+                    </div>
+                </div>
+            `;
+            document.getElementById('biodata-modal').classList.add('active');
+            showTab('family-info');
+        }
+
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+            
+            document.querySelector(`.tab-button[onclick="showTab('${tabName}')"]`).classList.add('active');
+            document.getElementById(tabName).classList.remove('hidden');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            filterAndRenderProfiles();
+        });
+    </script>
+</body>
+</html>
