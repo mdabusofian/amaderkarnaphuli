@@ -81,7 +81,7 @@
                             <p class="text-6xl font-bold text-blue-800" id="temperature">--°C</p>
                             <p class="text-lg text-gray-600 mt-2" id="condition">লোড হচ্ছে...</p>
                         </div>
-                        <img id="weather-icon" src="" alt="Weather Icon" class="w-24 h-24">
+                        <img id="weather-icon" src="" alt="আবহাওয়ার আইকন" class="w-24 h-24">
                     </div>
                     <p class="mt-4 text-gray-700">আর্দ্রতা: <span id="humidity">--</span></p>
                     <p class="text-gray-700">বাতাসের গতি: <span id="wind-speed">--</span></p>
@@ -119,6 +119,7 @@
 
         const API_KEY = "a0e2f097dee7a570c8956055aecb2598";
         const CITY_NAME = "Chittagong,BD";
+
         async function getWeatherData() {
             try {
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}&units=metric&lang=bn`);
@@ -132,7 +133,8 @@
                 document.getElementById('humidity').innerText = `${data.main.humidity}%`;
                 document.getElementById('wind-speed').innerText = `${Math.round(data.wind.speed * 3.6)} কিমি/ঘন্টা`;
                 
-                const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                const iconCode = data.weather[0].icon;
+                const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
                 document.getElementById('weather-icon').src = iconUrl;
                 
                 const lastUpdatedTime = new Date().toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' });
