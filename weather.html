@@ -118,8 +118,7 @@
         });
 
         const API_KEY = "a0e2f097dee7a570c8956055aecb2598";
-        const CITY_NAME = "Karnaphuli,BD";
-
+        const CITY_NAME = "Chittagong,BD";
         async function getWeatherData() {
             try {
                 const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}&units=metric&lang=bn`);
