@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমাদের উদ্যোগ - কর্ণফুলী উপজেলা লোকাল ডিরেক্টরি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalpurush:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Kalpurush', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-gradient-to-r from-sky-600 to-cyan-700 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between gap-4">
+            <a href="#" class="flex items-center gap-3 transition-transform duration-300 transform hover:scale-105">
+                <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold">উ</div>
+                <div>
+                    <h1 class="text-lg font-semibold">কর্ণফুলী উপজেলা</h1>
+                    <p class="text-xs opacity-90">উপজেলার সব তথ্য এক জায়গায়</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
+                <a href="#search" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">হোম</a>
+                <a href="govt service.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">সরকারি সেবা</a>
+                <a href="upazilla_introduction.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">পরিচিতি</a>
+                <a href="union.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">ইউনিয়ন পরিষদ</a>
+                <a href="upazilla_Office_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">সরকারি অফিস</a>
+                <a href="emergency_number.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">জরুরী নাম্বার</a>
+                <a href="hospitals_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">হাসপাতাল</a>
+                <a href="notice_board.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">নোটিশ বোর্ড</a>
+                <a href="mistri_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">মিস্ত্রী সেবা</a>
+                <a href="transport.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">পরিবহন</a>
+                <a href="blood_donor" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">রক্তদাতা</a>
+                <a href="#contact" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">যোগাযোগ</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a class="hidden md:inline-block bg-white/20 px-4 py-2 rounded-full text-sm font-medium hover:bg-white/30 transition-colors duration-300">লগইন</a>
+                <button id="mobileToggle" class="md:hidden p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="md:hidden bg-sky-700/30 px-6 pb-4 hidden">
+            <div class="flex flex-col gap-2 text-white text-sm font-medium">
+                <a href="index.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">হোম</a>
+                <a href="upazilla_introduction.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">উপজেলা পরিচিতি</a>
+                <a href="upazilla_Office_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">উপজেলা সরকারি অফিস</a>
+                <a href="union.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">ইউনিয়ন পরিষদ</a>
+                <a href="govt service.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">সরকারি সেবা সমূহ</a>
+                <a href="emergency_number.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">জরুরী নাম্বার</a>
+                <a href="hospitals_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">হাসপাতাল ও ক্লিনিক</a>
+                <a href="institute_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">শিক্ষাপ্রতিষ্ঠান</a>
+                <a href="mistri_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">মিস্ত্রী সেবা</a>
+                <a href="transport.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">পরিবহন ও গাড়িভাড়া</a>
+                <a href="blood_donor" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">রক্তদাতা</a>
+                <a href="notice_board.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">নোটিশ বোর্ড</a>
+                <a href="#contact" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">যোগাযোগ</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6 md:p-10">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden p-6 md:p-10">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                <div class="w-full md:w-1/3 flex flex-col items-center">
+                    <img src="আপনার_ছবির_লিংক.jpg" alt="মোঃ আবু সুফিয়ান" class="w-40 h-40 md:w-56 md:h-56 rounded-full border-4 border-sky-400 object-cover shadow-md transition-transform duration-300 hover:scale-105">
+                    <h2 class="mt-6 text-xl md:text-2xl font-bold text-gray-800 text-center">মোঃ আবু সুফিয়ান</h2>
+                    <p class="text-sm text-gray-500 text-center">কর্ণফুলীর একজন তরুণ উদ্যোক্তা</p>
+                    <div class="mt-4 text-center">
+                        <p class="text-gray-600 font-semibold">শিক্ষাগত যোগ্যতা:</p>
+                        <p class="text-gray-600">পটিয়া সরকারি কলেজে রসায়ন বিভাগের ৩য় বর্ষের শিক্ষার্থী</p>
+                        <p class="text-gray-600 font-semibold mt-2">ঠিকানা:</p>
+                        <p class="text-gray-600">দৌলতপুর, ফাজিলখার হাট, কর্ণফুলী, চট্টগ্রাম</p>
+                        <p class="text-gray-600 font-semibold mt-2">যোগাযোগ:</p>
+                        <p class="text-gray-600">মোবাইল: ০১৮৭১৫৩৬৪৬৮</p>
+                        <p class="text-gray-600">ইমেইল: আপনার_ইমেইল_ঠিকানা</p>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/3 mt-8 md:mt-0">
+                    <h1 class="text-2xl md:text-3xl font-extrabold text-sky-700 border-b-2 border-sky-500 pb-2 mb-6">আমাদের উদ্যোগ</h1>
+                    <p class="text-gray-700 leading-relaxed mb-6">
+                        আমি মোঃ আবু সুফিয়ান, কর্ণফুলীর একজন তরুণ উদ্যোক্তা। কর্ণফুলীর মানুষের সুবিধার্থে আমরা তৈরি করছি <strong>“কর্ণফুলী উপজেলা লোকাল ডিরেক্টরি”</strong> — একটি পূর্ণাঙ্গ ডিজিটাল প্ল্যাটফর্ম যেখানে কর্ণফুলীর প্রতিটি মানুষ এক ক্লিকে পাবে প্রয়োজনীয় সব তথ্য। আমরা প্রাথমিক পর্যায়ের কাজ শুরু করেছি এবং খুব দ্রুত এই প্ল্যাটফর্ম আপনাদের জন্য উন্মুক্ত করে দেবো। আপনাদের উৎসাহ ও সহযোগিতা আমাদের জন্য সবচেয়ে বড় অনুপ্রেরণা।
+                    </p>
+                    
+                    <h2 class="text-xl md:text-2xl font-bold text-sky-700 mt-8 mb-4">🎯 আমাদের লক্ষ্য</h2>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>✅ কর্ণফুলীর প্রতিটি সরকারি অফিস, ইউনিয়ন পরিষদ, স্কুল-কলেজ, হাসপাতাল, ব্যবসা ও সেবার তথ্য এক জায়গায় রাখা</li>
+                        <li>✅ জরুরি সময়ে দ্রুত যোগাযোগের সুযোগ দেওয়া</li>
+                        <li>✅ সরকারি সেবার আবেদন ও নির্দেশিকা সহজ করা</li>
+                        <li>✅ কর্ণফুলীকে ডিজিটাল, স্মার্ট এবং সংযুক্ত উপজেলায় রূপান্তর করা</li>
+                    </ul>
+
+                    <h2 class="text-xl md:text-2xl font-bold text-sky-700 mt-8 mb-4">📌 যা যা থাকবে এই প্ল্যাটফর্মে</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-gray-700">
+                        <ul class="space-y-2">
+                            <li>🏢 সরকারি অফিসের তথ্য (অফিস প্রধান, ঠিকানা, ফোন নম্বর)</li>
+                            <li>📝 সরকারি সেবা লিংক (ই-পাসপোর্ট, জন্মনিবন্ধন, এনআইডি, ইটিআইএন, পুলিশ ক্লিয়ারেন্স, ড্রাইভিং লাইসেন্স, ভূমি সেবা, অনলাইন জিডি, সরকারি চাকরি আবেদন, পাবলিক পরীক্ষার ফলাফল)</li>
+                            <li>🚨 জরুরি নাম্বার ও হেল্পলাইন (থানা, ফায়ার সার্ভিস, বিদ্যুৎ অফিস, এম্বুলেন্স, ৯৯৯, নারী-শিশু হেল্পলাইন)</li>
+                            <li>🏥 হাসপাতাল/ক্লিনিক তালিকা</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li>🩸 রক্তদাতা ডিরেক্টরি (রক্ত গ্রুপ অনুযায়ী ফিল্টার + রিকোয়েস্ট পোস্ট করার সুবিধা)</li>
+                            <li>🛠️ কারিগরি সার্ভিস (রাজমিস্ত্রি, ইলেকট্রিশিয়ান, প্লাম্বার, মেকানিক)</li>
+                            <li>🚕 পরিবহন সেবা (বাস কাউন্টার, সিএনজি স্ট্যান্ড, ড্রাইভার নম্বর)</li>
+                            <li>🏠 বাসা ভাড়া তথ্য</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li>📚 স্কুল, কলেজ, কোচিং তথ্য</li>
+                            <li>🌄 কর্ণফুলীর পরিচিতি, দর্শনীয় স্থান, শিল্পাঞ্চল ও অর্থনীতি</li>
+                            <li>📅 নোটিশ বোর্ড ও ইভেন্ট লিস্টিং</li>
+                            <li>🌦️ আবহাওয়া আপডেট</li>
+                        </ul>
+                    </div>
+
+                    <h2 class="text-xl md:text-2xl font-bold text-sky-700 mt-8 mb-4">💡 কেন এটি দরকার</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        কর্ণফুলীর মানুষ সহজে তথ্য পাবে, সরকারি সেবা নিতে সময় বাঁচবে, জরুরি মুহূর্তে সঠিক নম্বরে যোগাযোগ করতে পারবে। এটি হবে কর্ণফুলীর জন্য একটি সত্যিকারের ডিজিটাল প্ল্যাটফর্ম।
+                    </p>
+                    
+                    <h2 class="text-xl md:text-2xl font-bold text-sky-700 mt-8 mb-4">🤝 আপনাদের সহযোগিতা চাই</h2>
+                    <p class="text-gray-700 leading-relaxed">
+                        আমরা চাই এই উদ্যোগকে আরও বড় করতে। আপনার মতামত দিন — আর কী কী ফিচার যুক্ত করা উচিত? যদি আপনার কাছে ইউনিয়ন পরিষদ, স্কুল, হাসপাতাল, ব্যবসা, ড্রাইভার বা মিস্ত্রির তথ্য থাকে আমাদের জানান। আপনাদের উৎসাহ আমাদের কাজকে আরও দ্রুত এগিয়ে নিতে সাহায্য করবে। চলুন আমরা সবাই মিলে কর্ণফুলীকে ডিজিটাল করি।
+                    </p>
+                    
+                    <div class="bg-gray-200 p-4 rounded-lg mt-6 text-center">
+                        <p class="text-lg font-semibold text-gray-800">📢 এই পোস্ট শেয়ার করুন, মতামত দিন এবং আমাদের পাশে থাকুন।</p>
+                        <p class="text-xl font-bold text-sky-700 mt-2">💚 এক ক্লিকে কর্ণফুলীর সব তথ্য — আমাদের হাতের মুঠোয়।</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
