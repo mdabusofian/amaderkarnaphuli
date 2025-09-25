@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আবহাওয়া ও দুর্যোগ সতর্কতা - কর্ণফুলী উপজেলা লোকাল ডিরেক্টরি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalpurush:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Kalpurush', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <header class="bg-gradient-to-r from-sky-600 to-cyan-700 text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between gap-4">
+            <a href="#" class="flex items-center gap-3 transition-transform duration-300 transform hover:scale-105">
+                <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold">উ</div>
+                <div>
+                    <h1 class="text-lg font-semibold">কর্ণফুলী উপজেলা</h1>
+                    <p class="text-xs opacity-90">উপজেলার সব তথ্য এক জায়গায়</p>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
+                <a href="#search" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">হোম</a>
+                <a href="govt service.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">সরকারি সেবা</a>
+                <a href="upazilla_introduction.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">পরিচিতি</a>
+                <a href="union.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">ইউনিয়ন পরিষদ</a>
+                <a href="upazilla_Office_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">সরকারি অফিস</a>
+                <a href="emergency_number.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">জরুরী নাম্বার</a>
+                <a href="hospitals_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">হাসপাতাল</a>
+                <a href="notice_board.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">নোটিশ বোর্ড</a>
+                <a href="mistri_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">মিস্ত্রী সেবা</a>
+                <a href="transport.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">পরিবহন</a>
+                <a href="blood_donor" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">রক্তদাতা</a>
+                <a href="#contact" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">যোগাযোগ</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <a class="hidden md:inline-block bg-white/20 px-4 py-2 rounded-full text-sm font-medium hover:bg-white/30 transition-colors duration-300">লগইন</a>
+                <button id="mobileToggle" class="md:hidden p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="md:hidden bg-sky-700/30 px-6 pb-4 hidden">
+            <div class="flex flex-col gap-2 text-white text-sm font-medium">
+                <a href="index.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">হোম</a>
+                <a href="upazilla_introduction.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">উপজেলা পরিচিতি</a>
+                <a href="upazilla_Office_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">উপজেলা সরকারি অফিস</a>
+                <a href="union.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">ইউনিয়ন পরিষদ</a>
+                <a href="govt service.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">সরকারি সেবা সমূহ</a>
+                <a href="emergency_number.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">জরুরী নাম্বার</a>
+                <a href="hospitals_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">হাসপাতাল ও ক্লিনিক</a>
+                <a href="institute_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">শিক্ষাপ্রতিষ্ঠান</a>
+                <a href="mistri_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">মিস্ত্রী সেবা</a>
+                <a href="transport.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">পরিবহন ও গাড়িভাড়া</a>
+                <a href="blood_donor" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">রক্তদাতা</a>
+                <a href="notice_board.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">নোটিশ বোর্ড</a>
+                <a href="#contact" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">যোগাযোগ</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-6 md:p-10">
+        <div class="bg-white rounded-lg shadow-xl overflow-hidden p-6 md:p-10">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-center text-sky-700 mb-6">আবহাওয়া ও দুর্যোগ সতর্কতা</h1>
+            <p class="text-center text-gray-600 mb-8">
+                কর্ণফুলী নদীর পাশে অবস্থান হওয়ায় আবহাওয়া এবং যেকোনো দুর্যোগের আগাম তথ্য জানা অত্যন্ত গুরুত্বপূর্ণ। আমাদের এই প্ল্যাটফর্মে আপনি লাইভ আবহাওয়ার আপডেট এবং জরুরি দুর্যোগকালীন সতর্কতা পাবেন।
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-blue-50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold text-sky-600 mb-4">লাইভ আবহাওয়া</h2>
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-6xl font-bold text-blue-800" id="temperature">--°C</p>
+                            <p class="text-lg text-gray-600 mt-2" id="condition">লোড হচ্ছে...</p>
+                        </div>
+                        <img id="weather-icon" src="" alt="Weather Icon" class="w-24 h-24">
+                    </div>
+                    <p class="mt-4 text-gray-700">আর্দ্রতা: <span id="humidity">--</span></p>
+                    <p class="text-gray-700">বাতাসের গতি: <span id="wind-speed">--</span></p>
+                    <p class="text-sm text-gray-500 mt-4" id="last-updated">সর্বশেষ আপডেট: --</p>
+                </div>
+
+                <div class="bg-red-50 p-6 rounded-lg shadow-md">
+                    <h2 class="text-2xl font-bold text-red-600 mb-4">দুর্যোগ সতর্কতা</h2>
+                    <div id="disaster-alert-message" class="p-4 bg-red-100 border-l-4 border-red-500 text-red-700">
+                        <p class="font-bold">বর্তমানে কোনো দুর্যোগ সতর্কতা নেই।</p>
+                        <p class="mt-2 text-sm">যেকোনো জরুরি পরিস্থিতিতে দ্রুত আপডেট পেতে আমাদের নোটিশ বোর্ড ফলো করুন।</p>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-3">জরুরী হেল্পলাইন</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>ফায়ার সার্ভিস: <span class="font-bold">৯৯৯</span></li>
+                        <li>জাতীয় জরুরি সেবা: <span class="font-bold">৯৯৯</span></li>
+                        <li>কর্ণফুলী থানা: <span class="font-bold">01320146059</span></li>
+                        <li>উপজেলা স্বাস্থ্য কমপ্লেক্স: <span class="font-bold">01723719463</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            var mobileMenu = document.getElementById('mobileMenu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        const API_KEY = "a0e2f097dee7a570c8956055aecb2598";
+        const CITY_NAME = "Karnaphuli,BD";
+
+        async function getWeatherData() {
+            try {
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${API_KEY}&units=metric&lang=bn`);
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.statusText}`);
+                }
+                const data = await response.json();
+
+                document.getElementById('temperature').innerText = `${Math.round(data.main.temp)}°C`;
+                document.getElementById('condition').innerText = data.weather[0].description;
+                document.getElementById('humidity').innerText = `${data.main.humidity}%`;
+                document.getElementById('wind-speed').innerText = `${Math.round(data.wind.speed * 3.6)} কিমি/ঘন্টা`;
+                
+                const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                document.getElementById('weather-icon').src = iconUrl;
+                
+                const lastUpdatedTime = new Date().toLocaleTimeString('bn-BD', { hour: '2-digit', minute: '2-digit' });
+                document.getElementById('last-updated').innerText = `সর্বশেষ আপডেট: ${lastUpdatedTime}`;
+
+            } catch (error) {
+                console.error("আবহাওয়ার ডেটা আনা সম্ভব হয়নি:", error);
+                document.getElementById('temperature').innerText = `--°C`;
+                document.getElementById('condition').innerText = `ডেটা পাওয়া যায়নি`;
+                document.getElementById('last-updated').innerText = `তথ্য পেতে ব্যর্থ হয়েছে।`;
+            }
+        }
+
+        getWeatherData();
+        setInterval(getWeatherData, 600000);
+    </script>
+</body>
+</html>
