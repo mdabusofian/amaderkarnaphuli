@@ -13,58 +13,80 @@
   </style>
 </head>
 <body class="bg-slate-50 text-slate-800">
-  <header class="bg-gradient-to-r from-sky-600 to-cyan-700 text-white sticky top-0 z-50 shadow">
+<header class="bg-gradient-to-r from-sky-600 to-cyan-700 text-white sticky top-0 z-50 shadow-lg">
     <div class="container mx-auto px-6 py-4 flex items-center justify-between gap-4">
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center text-xl">উ</div>
-        <div>
-          <h1 class="text-lg font-semibold"> কর্ণফুলী উপজেলা </h1>
-          <p class="text-xs opacity-90"> উপজেলার সব তথ্য এক জায়গায়</p>
+        <a href="#" class="flex items-center gap-3 transition-transform duration-300 transform hover:scale-105">
+            <div class="w-11 h-11 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold">উ</div>
+            <div>
+                <h1 class="text-lg font-semibold">কর্ণফুলী উপজেলা</h1>
+                <p class="text-xs opacity-90">উপজেলার সব তথ্য এক জায়গায়</p>
+            </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-2 text-sm font-medium">
+            <a href="#search" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                হোম
+            </a>
+            <a href="govt service.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                সরকারি সেবা
+            </a>
+            <a href="upazilla_introduction.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                পরিচিতি
+            </a>
+            <a href="union.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                ইউনিয়ন পরিষদ
+            </a>
+            <a href="upazilla_Office_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                সরকারি অফিস
+            </a>
+            <a href="emergency_number.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                জরুরী নাম্বার
+            </a>
+            <a href="hospitals_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                হাসপাতাল
+            </a>
+            <a href="notice_board.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                নোটিশ বোর্ড
+            </a>
+            <a href="mistri_list.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                মিস্ত্রী সেবা
+            </a>
+            <a href="transport.html" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                পরিবহন
+            </a>
+            <a href="blood_donor" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                রক্তদাতা
+            </a>
+            <a href="#contact" class="hover:bg-white/20 px-3 py-2 rounded-full transition-all duration-300 flex items-center gap-2">
+                যোগাযোগ
+            </a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+            <a class="hidden md:inline-block bg-white/20 px-4 py-2 rounded-full text-sm font-medium hover:bg-white/30 transition-colors duration-300">লগইন</a>
+            <button id="mobileToggle" class="md:hidden p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
         </div>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#search" class="hover:underline">হোম</a>
-        <a href="govt service.html" class="hover:underline"> সরকারি সেবা সমূহ</a>
-        <a href="upazilla_introduction.html" class="hover:underline">উপজেলা পরিচিতি</a>
-        <a href="union.html" class="hover:underline">ইউনিয়ন পরিষদ</a>
-        <a href="upazilla_Office_list.html" class="hover:underline"> উপজেলা সরকারি অফিস </a>
-        <a href="emergency_number.html" class="hover:underline"> জরুরী নাম্বার  </a>
-        <a href="hospitals_list.html" class="hover:underline"> হাসপাতাল ও ক্লিনিক </a>
-        <a href="notice_board.html" class="hover:underline">নোটিশ বোর্ড</a>
-        <a href="mistri_list.html" class="hover:underline"> মিস্ত্রী সেবা </a>
-        <a href="transport.html" class="hover:underline"> পরিবহন ও গাড়িভাড়া </a>
-        <a href="blood_donor" class="hover:underline">রক্তদাতা</a>
-        <a href="#contact" class="hover:underline">যোগাযোগ</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <a class="hidden md:inline-block bg-white/20 px-3 py-1 rounded text-sm">লগইন</a>
-        <button id="mobileToggle" class="md:hidden p-2 rounded bg-white/10">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-        </button>
-      </div>
     </div>
     <div id="mobileMenu" class="md:hidden bg-sky-700/30 px-6 pb-4 hidden">
-      <div class="flex flex-col gap-2 text-white text-sm">
-        <a href="index.html" class="hover:underline">হোম</a>
-        <a href="upazilla_introduction.html" class="hover:underline">উপজেলা পরিচিতি</a>
-        <a href="upazilla_Office_list.html" class="hover:underline"> উপজেলা সরকারি অফিস </a>
-        <a href="union.html" class="hover:underline">ইউনিয়ন পরিষদ</a>
-        <a href="govt service.html" class="hover:underline">  সরকারি সেবা সমূহ</a>
-        <a href="emergency_number.html" class="hover:underline"> জরুরী নাম্বার  </a>
-        <a href="hospitals_list.html" class="hover:underline"> হাসপাতাল ও ক্লিনিক </a>
-        <a href="institute_list.html" class="hover:underline"> শিক্ষাপ্রতিষ্ঠান </a>
-        <a href="mistri_list.html" class="hover:underline"> মিস্ত্রী সেবা </a>
-        <a href="transport.html" class="hover:underline"> পরিবহন ও গাড়িভাড়া </a>
-        <a href="blood_donor" class="hover:underline">রক্তদাতা</a>
-          <a href="notice_board.html" class="hover:underline">নোটিশ বোর্ড</a>
-        <a href="#contact" class="hover:underline"> যোগাযোগ</a>
-        
-      </div>
+        <div class="flex flex-col gap-2 text-white text-sm font-medium">
+            <a href="index.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">হোম</a>
+            <a href="upazilla_introduction.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">উপজেলা পরিচিতি</a>
+            <a href="upazilla_Office_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">উপজেলা সরকারি অফিস</a>
+            <a href="union.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">ইউনিয়ন পরিষদ</a>
+            <a href="govt service.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">সরকারি সেবা সমূহ</a>
+            <a href="emergency_number.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">জরুরী নাম্বার</a>
+            <a href="hospitals_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">হাসপাতাল ও ক্লিনিক</a>
+            <a href="institute_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">শিক্ষাপ্রতিষ্ঠান</a>
+            <a href="mistri_list.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">মিস্ত্রী সেবা</a>
+            <a href="transport.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">পরিবহন ও গাড়িভাড়া</a>
+            <a href="blood_donor" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">রক্তদাতা</a>
+            <a href="notice_board.html" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">নোটিশ বোর্ড</a>
+            <a href="#contact" class="hover:bg-white/20 px-3 py-2 rounded-lg transition-colors duration-300">যোগাযোগ</a>
+        </div>
     </div>
-  </header>
-
+</header>
   <main>
     <section id="search" class="bg-gradient-to-r from-white to-sky-50 py-12">
       <div class="container mx-auto px-6">
