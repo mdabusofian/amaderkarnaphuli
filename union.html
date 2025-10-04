@@ -29,6 +29,10 @@
       background: #f8f8f8;
       border: 1px solid #e5e7eb;
     }
+    /* Custom style for smooth scrolling behavior */
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 <body class="bg-gray-100 text-slate-800 min-h-screen flex flex-col">
@@ -36,13 +40,34 @@
   <header class="header-bg text-white shadow-lg">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <h1 class="text-2xl font-bold flex items-center gap-2">🗺️ ইউনিয়ন পরিষদ</h1>
-      <a href="index.html" class="text-sm underline hover:text-yellow-300 transition">⬅ হোমে ফিরুন</a>
+      <a href="#" class="text-sm underline hover:text-yellow-300 transition">⬅ হোমে ফিরুন</a>
     </div>
   </header>
 
   <main class="flex-1 container mx-auto px-6 py-10">
     <h2 class="text-4xl font-extrabold mb-4 text-center text-gray-800">ইউনিয়ন পরিষদ ডিরেক্টরি</h2>
     <p class="text-center text-slate-600 max-w-3xl mx-auto mb-10">এখানে আপনার উপজেলার সকল ইউনিয়নের চেয়ারম্যান, সচিব, ইউডিসি ও মেম্বারদের তথ্য পাবেন।</p>
+
+    <!-- Filter and Navigation Section -->
+    <div class="p-6 bg-white rounded-xl shadow-lg mb-10 border border-indigo-100">
+      <div class="mb-6">
+        <label for="searchInput" class="block text-lg font-bold text-gray-700 mb-2">🔍 ইউনিয়ন অনুসন্ধান করুন</label>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="ইউনিয়নের নাম, চেয়ারম্যানের নাম বা ওয়ার্ড মেম্বারের নাম দিয়ে অনুসন্ধান করুন..."
+          class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-base"
+        />
+      </div>
+
+      <div>
+        <h4 class="text-lg font-bold text-gray-700 mb-3">🔗 দ্রুত নেভিগেশন (ইউনিয়ন বাছাই)</h4>
+        <div id="quickJump" class="flex flex-wrap gap-2">
+          <!-- Quick jump buttons will be injected here -->
+        </div>
+      </div>
+    </div>
+    <!-- End Filter and Navigation Section -->
 
     <div id="unionContainer" class="space-y-12">
       </div>
@@ -149,10 +174,44 @@
 
     const container = document.getElementById('unionContainer');
 
-    function renderUnions() {
+    function createPersonCard(role, name, phone, email, iconClass) {
+      return `
+        <div class="person-card rounded-xl p-6 text-center flex flex-col items-center">
+          <div class="text-3xl text-indigo-700 mb-3"><i class="${iconClass}"></i></div>
+          <p class="text-sm font-semibold text-gray-600 mb-1">${role}</p>
+          <h4 class="text-lg font-bold text-gray-800">${name}</h4>
+          <div class="text-sm text-gray-500 mt-2 space-y-1">
+            ${phone ? `<p><a href="tel:${phone}" class="hover:underline text-blue-600"><i class="fas fa-phone-alt mr-2"></i>${phone}</a></p>` : ''}
+            ${email ? `<p><a href="mailto:${email}" class="hover:underline text-blue-600"><i class="fas fa-envelope mr-2"></i>${email}</a></p>` : ''}
+          </div>
+        </div>
+      `;
+    }
+    
+    function checkMemberMatch(members, filter) {
+      return members.some(member => member.name.toLowerCase().includes(filter));
+    }
+
+    function renderUnions(filter = '') {
       container.innerHTML = '';
-      unionData.forEach(union => {
+      const normalizedFilter = filter.toLowerCase().trim();
+
+      unionData.forEach((union, i) => {
+        
+        // Filtering Logic
+        const matchesName = union.name.toLowerCase().includes(normalizedFilter);
+        const matchesChairman = union.chairman.name.toLowerCase().includes(normalizedFilter);
+        const matchesSecretary = union.secretary.name.toLowerCase().includes(normalizedFilter);
+        const matchesUDC = union.udc.name.toLowerCase().includes(normalizedFilter);
+        const matchesMember = checkMemberMatch(union.members, normalizedFilter);
+
+        if (normalizedFilter && !(matchesName || matchesChairman || matchesSecretary || matchesUDC || matchesMember)) {
+          return; // Skip rendering if it doesn't match the filter
+        }
+        // End Filtering Logic
+
         const unionSection = document.createElement('section');
+        unionSection.id = `union-${i + 1}`; // Assign ID for quick jump/scroll
         unionSection.className = 'union-card rounded-xl p-8';
         unionSection.innerHTML = `
           <div class="flex items-center gap-4 mb-6">
@@ -185,22 +244,41 @@
       });
     }
 
-    function createPersonCard(role, name, phone, email, iconClass) {
-      return `
-        <div class="person-card rounded-xl p-6 text-center flex flex-col items-center">
-          <div class="text-3xl text-indigo-700 mb-3"><i class="${iconClass}"></i></div>
-          <p class="text-sm font-semibold text-gray-600 mb-1">${role}</p>
-          <h4 class="text-lg font-bold text-gray-800">${name}</h4>
-          <div class="text-sm text-gray-500 mt-2 space-y-1">
-            ${phone ? `<p><a href="tel:${phone}" class="hover:underline text-blue-600"><i class="fas fa-phone-alt mr-2"></i>${phone}</a></p>` : ''}
-            ${email ? `<p><a href="mailto:${email}" class="hover:underline text-blue-600"><i class="fas fa-envelope mr-2"></i>${email}</a></p>` : ''}
-          </div>
-        </div>
-      `;
+    function createQuickJumpButtons() {
+      const quickJumpContainer = document.getElementById('quickJump');
+      quickJumpContainer.innerHTML = '';
+
+      unionData.forEach((union, index) => {
+        const unionId = `union-${index + 1}`;
+        const button = document.createElement('button');
+        button.className = 'union-jump-btn bg-white hover:bg-indigo-50 border border-gray-300 text-slate-700 font-semibold py-2 px-4 rounded-full transition duration-150 text-sm shadow-sm hover:shadow-md';
+        button.textContent = union.name;
+        button.addEventListener('click', () => {
+          // Clear search input and re-render all unions before scrolling
+          document.getElementById('searchInput').value = '';
+          renderUnions('');
+          
+          // Scroll to the target union
+          document.getElementById(unionId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        quickJumpContainer.appendChild(button);
+      });
+    }
+    
+    function handleSearch(event) {
+      const filter = event.target.value;
+      renderUnions(filter);
     }
 
-    // Initial render
-    renderUnions();
+    // Initial setup and event listeners
+    window.addEventListener('load', () => {
+      // Add event listener for search input
+      document.getElementById('searchInput').addEventListener('input', handleSearch);
+      
+      // Initial render setup
+      renderUnions();
+      createQuickJumpButtons();
+    });
   </script>
 </body> 
-</html>   ইউনিয়ন ভিত্তিক সহজে যাতে খুজে পায় পুরো পেইজ যাতে স্ক্রল করতে না হয় তার জন্য উপরে ইউনিয়নি ভিত্তিক সার্চ ফর্ম অথবা কার্ড বানাই দাও
+</html>
