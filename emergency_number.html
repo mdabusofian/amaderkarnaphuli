@@ -1,114 +1,194 @@
 <!doctype html>
 <html lang="bn">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>জরুরি যোগাযোগ — উপজেলা লোকাল ডিরেক্টরি</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Noto Sans Bengali', sans-serif;
-    }
-    .section-title {
-      position: relative;
-      margin-bottom: 2rem;
-      padding-bottom: 0.5rem;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      height: 4px;
-      width: 60px;
-      background-color: #3b82f6;
-      border-radius: 999px;
-    }
-    .card {
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-    .list-item {
-      transition: all 0.2s ease-in-out;
-    }
-    .list-item:hover {
-      background-color: #f3f4f6;
-      transform: scale(1.01);
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>জরুরি যোগাযোগ — উপজেলা লোকাল ডিরেক্টরি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans Bengali', sans-serif;
+        }
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            height: 4px;
+            width: 60px;
+            background-color: #3b82f6;
+            border-radius: 999px;
+        }
+        .card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        .list-item {
+            transition: all 0.2s ease-in-out;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .list-item:hover {
+            background-color: #f3f4f6;
+            transform: scale(1.01);
+        }
+        .list-item:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-slate-800 min-h-screen flex flex-col">
-  
-  <header class="bg-gradient-to-r from-red-600 to-red-800 text-white shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto px-6 py-4 flex justify-center sm:justify-between items-center">
-      <h1 class="text-2xl font-bold flex items-center gap-2">🚨 জরুরি যোগাযোগ</h1>
-      <a href="#" class="hidden sm:block text-sm underline hover:text-yellow-300">উপজেলা লোকাল ডিরেক্টরি</a>
-    </div>
-  </header>
-
-  <main class="flex-1 container mx-auto px-6 py-10">
-
-    <section id="emergency">
-      <h2 class="text-3xl font-bold text-center section-title text-blue-700">জরুরি যোগাযোগের নম্বর</h2>
-      <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">জরুরী প্রয়োজনে দ্রুত যোগাযোগের জন্য প্রয়োজনীয় হটলাইন ও নম্বরসমূহ।</p>
-      
-      <div class="bg-white p-6 rounded-lg card max-w-3xl mx-auto">
-        <h3 class="text-xl font-semibold mb-4 text-red-600 flex items-center gap-2">
-          <i class="fas fa-bullhorn"></i> জাতীয় জরুরি হটলাইন (২৪/৭)
-        </h3>
-        <ul class="space-y-3 mb-6">
-          <li class="flex items-center gap-3 p-3 rounded-md list-item">
-            <i class="fas fa-phone-alt text-lg text-blue-500"></i>
-            <div>
-              <p class="font-bold">জাতীয় জরুরি সেবা (পুলিশ, ফায়ার, অ্যাম্বুলেন্স):</p>
-              <a href="tel:999" class="text-lg text-blue-800 font-medium hover:underline">৯৯৯</a>
-            </div>
-          </li>
-          <li class="flex items-center gap-3 p-3 rounded-md list-item">
-            <i class="fas fa-phone-alt text-lg text-blue-500"></i>
-            <div>
-              <p class="font-bold">সরকারী তথ্য ও সেবা:</p>
-              <a href="tel:333" class="text-lg text-blue-800 font-medium hover:underline">৩৩৩</a>
-            </div>
-          </li>
-          <li class="flex items-center gap-3 p-3 rounded-md list-item">
-            <i class="fas fa-phone-alt text-lg text-blue-500"></i>
-            <div>
-              <p class="font-bold">স্বাস্থ্য বাতায়ন (স্বাস্থ্য পরামর্শ):</p>
-              <a href="tel:16263" class="text-lg text-blue-800 font-medium hover:underline">১৬২৬৩</a>
-            </div>
-          </li>
-        </ul>
-        <div class="border-t border-gray-200 pt-6">
-          <h3 class="text-xl font-semibold mb-4 text-green-600 flex items-center gap-2">
-            <i class="fas fa-map-marker-alt"></i> উপজেলা ভিত্তিক জরুরি যোগাযোগ
-          </h3>
-          <ul class="space-y-3">
-             <li class="flex items-center gap-3 p-3 rounded-md list-item">
-              <i class="fas fa-phone-alt text-lg text-blue-500"></i>
-              <div>
-                <p class="font-bold">কর্ণফুলী উপজেলা স্বাস্থ্য কমপ্লেক্স:</p>
-                <a href="tel:01700001001" class="text-lg text-blue-800 font-medium hover:underline">০১৭০০-০০১০০১</a>
-              </div>
-            </li>
-            <li class="flex items-center gap-3 p-3 rounded-md list-item">
-              <i class="fas fa-phone-alt text-lg text-blue-500"></i>
-              <div>
-                <p class="font-bold">কর্ণফুলী গ্যাস ডিস্ট্রিবিউশন কোম্পানি (কেজিডিসিএল):</p>
-                <a href="tel:16512" class="text-lg text-blue-800 font-medium hover:underline">১৬৫১২</a>
-              </div>
-            </li>
-          </ul>
+    
+    <header class="bg-gradient-to-r from-red-600 to-red-800 text-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center gap-2">🚨 জরুরি যোগাযোগ</h1>
+            <a href="index.html" class="text-sm underline hover:text-yellow-300 transition flex items-center gap-1">
+                <i class="fas fa-home"></i> হোমে ফিরুন
+            </a>
         </div>
-      </div>
-    </section>
+    </header>
 
-  </main>
+    <main class="flex-1 container mx-auto px-6 py-10">
 
-  <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
-    <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — জরুরি যোগাযোগ</p>
-  </footer>
+        <h2 class="text-4xl font-extrabold mb-4 text-center text-gray-800">জাতীয় ও স্থানীয় জরুরি হটলাইন</h2>
+        <p class="text-center text-slate-600 max-w-3xl mx-auto mb-10">যেকোনো জরুরি প্রয়োজনে দ্রুত যোগাযোগের জন্য প্রয়োজনীয় হটলাইন ও নম্বরসমূহ।</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            
+            <div class="bg-white p-6 rounded-xl card">
+                <h3 class="text-2xl font-bold mb-4 text-red-600 flex items-center gap-3 border-b-2 border-red-200 pb-2">
+                    <i class="fas fa-life-ring"></i> ১. জীবন-রক্ষাকারী জরুরি পরিষেবা
+                </h3>
+                <ul class="space-y-1">
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">জাতীয় জরুরি সেবা (পুলিশ, ফায়ার, অ্যাম্বুলেন্স):</p>
+                        <a href="tel:999" class="text-xl text-red-700 font-extrabold hover:underline">৯৯৯</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">ফায়ার সার্ভিস ও সিভিল ডিফেন্স:</p>
+                        <a href="tel:102" class="text-xl text-red-700 font-extrabold hover:underline">১০২</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">স্বাস্থ্য বাতায়ন (স্বাস্থ্য পরামর্শ):</p>
+                        <a href="tel:16263" class="text-xl text-blue-700 font-extrabold hover:underline">১৬২৬৩</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">দুর্যোগের আগাম বার্তা:</p>
+                        <a href="tel:1090" class="text-xl text-blue-700 font-extrabold hover:underline">১০৯০</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">বাংলাদেশ কোস্ট গার্ড:</p>
+                        <a href="tel:16166" class="text-xl text-blue-700 font-extrabold hover:underline">১৬১৬৬</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl card">
+                <h3 class="text-2xl font-bold mb-4 text-purple-600 flex items-center gap-3 border-b-2 border-purple-200 pb-2">
+                    <i class="fas fa-hand-holding-heart"></i> ২. সামাজিক, আইনি ও সুরক্ষা সেবা
+                </h3>
+                <ul class="space-y-1">
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">নারী ও শিশু নির্যাতন প্রতিরোধ:</p>
+                        <a href="tel:109" class="text-xl text-purple-700 font-extrabold hover:underline">১০৯</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">শিশু সহায়তাকেন্দ্র হেল্পলাইন:</p>
+                        <a href="tel:1098" class="text-xl text-purple-700 font-extrabold hover:underline">১০৯৮</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">লিগাল এইড হেল্পলাইন (আইনি সহায়তা):</p>
+                        <a href="tel:16430" class="text-xl text-blue-700 font-extrabold hover:underline">১৬৪৩০</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">স্বাস্থ্য সেবা (ডাইরেক্ট):</p>
+                        <a href="tel:16177" class="text-xl text-blue-700 font-extrabold hover:underline">১৬১৭৭</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">কৃষি কল সেন্টার (কৃষি পরামর্শ):</p>
+                        <a href="tel:16123" class="text-xl text-blue-700 font-extrabold hover:underline">১৬১২৩</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl card">
+                <h3 class="text-2xl font-bold mb-4 text-blue-600 flex items-center gap-3 border-b-2 border-blue-200 pb-2">
+                    <i class="fas fa-landmark"></i> ৩. প্রশাসনিক ও অন্যান্য সেবা
+                </h3>
+                <ul class="space-y-1">
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">সরকারী তথ্য ও সেবা:</p>
+                        <a href="tel:333" class="text-xl text-blue-700 font-extrabold hover:underline">৩৩৩</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">জাতীয় পরিচয়পত্র (NID) সেবা:</p>
+                        <a href="tel:105" class="text-xl text-blue-700 font-extrabold hover:underline">১০৫</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">দুদক (দুর্নীতি দমন কমিশন):</p>
+                        <a href="tel:106" class="text-xl text-blue-700 font-extrabold hover:underline">১০৬</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">ভূমি সেবা (অনলাইন):</p>
+                        <a href="tel:16122" class="text-xl text-blue-700 font-extrabold hover:underline">১৬১২২</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">বিটিআরসি (টেলিযোগাযোগ অভিযোগ):</p>
+                        <a href="tel:100" class="text-xl text-blue-700 font-extrabold hover:underline">১০০</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">সর্বজনীন পেনশন স্কিম হটলাইন:</p>
+                        <a href="tel:16999" class="text-xl text-blue-700 font-extrabold hover:underline">১৬৯৯৯</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl card">
+                <h3 class="text-2xl font-bold mb-4 text-green-600 flex items-center gap-3 border-b-2 border-green-200 pb-2">
+                    <i class="fas fa-map-marker-alt"></i> ৪. স্থানীয় ও পরিবহন যোগাযোগ
+                </h3>
+                <ul class="space-y-1">
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">বাংলাদেশ রেলওয়ে (তথ্য ও অনুসন্ধান):</p>
+                        <a href="tel:16373" class="text-xl text-green-700 font-extrabold hover:underline">১৬৩৭৩</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">কর্ণফুলী উপজেলা স্বাস্থ্য কমপ্লেক্স:</p>
+                        <a href="tel:01700001001" class="text-xl text-green-700 font-extrabold hover:underline">০১৭০০-০০১০০১</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">কর্ণফুলী গ্যাস ডিস্ট্রিবিউশন কোম্পানি (কেজিডিসিএল):</p>
+                        <a href="tel:16512" class="text-xl text-green-700 font-extrabold hover:underline">১৬৫১২</a>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">প্রবাসী কল্যাণ হেল্পলাইন:</p>
+                        <a href="tel:+8809610010010" class="text-xl text-green-700 font-extrabold hover:underline">+৮৮০৯৬১০০১০০১০</a>
+                        <span class="text-sm text-gray-500">(আংশিক নম্বর)</span>
+                    </li>
+                    <li class="flex items-center justify-between p-3 rounded-md list-item">
+                        <p class="font-bold">পাসপোর্ট সংক্রান্ত হটলাইন:</p>
+                        <a href="tel:+8809666716440" class="text-xl text-green-700 font-extrabold hover:underline">+৮৮০৯৬৬৬৭১৬৪৪০</a>
+                        <span class="text-sm text-gray-500">(আংশিক নম্বর)</span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="mt-12 text-center max-w-2xl mx-auto p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 rounded-lg">
+            <p class="font-semibold"><i class="fas fa-exclamation-triangle mr-2"></i> মনে রাখবেন: ৯৯৯ নম্বরটি পুলিশ, ফায়ার এবং অ্যাম্বুলেন্সের জন্য দেশের প্রধান জরুরি সেবা নম্বর।</p>
+        </div>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
+        <p class="text-sm">&copy; ২০২৫ উপজেলা লোকাল ডিরেক্টরি — জরুরি যোগাযোগ</p>
+    </footer>
 </body>
 </html>
