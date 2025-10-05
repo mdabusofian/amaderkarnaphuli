@@ -1,237 +1,341 @@
 <!doctype html>
 <html lang="bn">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>বাসা ভাড়া বোর্ড</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Noto Sans Bengali', sans-serif;
-    }
-    .section-title {
-      position: relative;
-      margin-bottom: 2rem;
-      padding-bottom: 0.5rem;
-    }
-    .section-title::after {
-      content: '';
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      height: 4px;
-      width: 60px;
-      background-color: #3b82f6;
-      border-radius: 999px;
-    }
-    .card {
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      transition: transform 0.2s ease-in-out;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-    }
-    .submit-btn {
-        background-color: #10B981; /* green-500 */
-        transition: background-color 0.3s ease;
-    }
-    .submit-btn:hover {
-        background-color: #059669; /* green-600 */
-    }
-  </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বাসা ভাড়া বোর্ড — উপজেলা লোকাল ডিরেক্টরি</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Noto Sans Bengali', sans-serif;
+        }
+        .header-bg {
+            background-color: #0d47a1; /* Deep Blue for a professional look */
+        }
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            height: 4px;
+            width: 80px;
+            background-color: #f59e0b; /* Amber/Orange highlight */
+            border-radius: 999px;
+        }
+        .listing-card {
+            background: #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+        }
+        .listing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+        }
+        .submit-btn {
+            background-color: #f59e0b; /* Amber */
+            transition: background-color 0.3s ease;
+        }
+        .submit-btn:hover {
+            background-color: #d97706; /* Darker Amber */
+        }
+    </style>
 </head>
-<body class="bg-gray-100 text-slate-800 min-h-screen flex flex-col">
-  
-  <header class="bg-gradient-to-r from-teal-500 to-green-600 text-white shadow-lg sticky top-0 z-50">
-    <div class="container mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
-      <h1 class="text-2xl font-bold flex items-center gap-2">🏠 বাসা ভাড়া বোর্ড</h1>
-      <nav class="mt-4 sm:mt-0">
-        <ul class="flex flex-wrap justify-center gap-4 text-sm font-medium">
-          <li><a href="#rent-house" class="hover:underline">বাসা খুঁজুন</a></li>
-          <li><a href="#list-house" class="hover:underline">ভাড়া দিন</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main class="flex-1 container mx-auto px-6 py-10">
-
-    <section id="rent-house" class="mb-12 pt-10">
-      <h2 class="text-3xl font-bold text-center section-title">বাসা খুঁজুন — উপলব্ধ তালিকা</h2>
-      <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">আপনার পছন্দের এলাকা, বেডরুম ও বাজেট অনুযায়ী বাসা খুঁজে নিন।</p>
-      
-      <div class="card bg-white p-6 rounded-lg mb-8 flex flex-col md:flex-row items-center gap-4">
-        <div class="w-full md:w-auto">
-          <label for="location-filter" class="block text-sm font-medium text-gray-700 mb-1">এলাকা</label>
-          <select id="location-filter" class="w-full md:w-48 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="all">সকল এলাকা</option>
-            <option value="শিকলবাহা">শিকলবাহা</option>
-            <option value="বড়উঠান">বড়উঠান</option>
-            <option value="চরপাথরঘাটা">চরপাথরঘাটা</option>
-            <option value="জুলধা">জুলধা</option>
-            <option value="চরলক্ষ্যা">চরলক্ষ্যা</option>
-          </select>
-        </div>
-        <div class="w-full md:w-auto">
-          <label for="rooms-filter" class="block text-sm font-medium text-gray-700 mb-1">বেডরুম</label>
-          <select id="rooms-filter" class="w-full md:w-32 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <option value="all">সব</option>
-            <option value="1">১ বেড</option>
-            <option value="2">২ বেড</option>
-            <option value="3">৩ বেড</option>
-            <option value="4+">৪+</option>
-          </select>
-        </div>
-        <div class="flex-grow w-full md:w-auto">
-          <label for="search-input" class="block text-sm font-medium text-gray-700 mb-1">ঠিকানা খুঁজুন</label>
-          <input type="text" id="search-input" placeholder="ঠিকানা বা বিবরণ দিয়ে খুঁজুন" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
-        </div>
-        <div class="w-full md:w-auto pt-4 md:pt-0">
-          <button id="filter-btn" class="w-full md:w-auto bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 transition">খুঁজুন</button>
-        </div>
-      </div>
-
-      <div id="listing-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        </div>
-      <div id="no-results" class="hidden text-center py-8 text-gray-500">
-        কোনো বাসা খুঁজে পাওয়া যায়নি।
-      </div>
-    </section>
-
-    <section id="list-house" class="mb-12 pt-10">
-      <h2 class="text-3xl font-bold text-center section-title">আপনার বাসা ভাড়া দিন</h2>
-      <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">আপনার বাসার বিবরণ পূরণ করে খুব সহজে এখানে তালিকাভুক্ত করুন।</p>
-
-      <div class="card bg-white p-6 rounded-lg max-w-2xl mx-auto">
-        <form id="listing-form" class="space-y-4">
-          <div>
-            <label for="lister-name" class="block text-sm font-medium text-gray-700 mb-1">আপনার নাম</label>
-            <input type="text" id="lister-name" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-          </div>
-          <div>
-            <label for="lister-phone" class="block text-sm font-medium text-gray-700 mb-1">যোগাযোগের ফোন নম্বর</label>
-            <input type="tel" id="lister-phone" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-          </div>
-          <div>
-            <label for="house-address" class="block text-sm font-medium text-gray-700 mb-1">বাসার সম্পূর্ণ ঠিকানা</label>
-            <input type="text" id="house-address" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-          </div>
-          <div class="flex gap-4">
-            <div class="w-1/2">
-                <label for="house-rent" class="block text-sm font-medium text-gray-700 mb-1">ভাড়া (টাকা)</label>
-                <input type="number" id="house-rent" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-            </div>
-            <div class="w-1/2">
-                <label for="house-rooms" class="block text-sm font-medium text-gray-700 mb-1">বেডরুম সংখ্যা</label>
-                <input type="number" id="house-rooms" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500">
-            </div>
-          </div>
-          <div>
-            <label for="house-description" class="block text-sm font-medium text-gray-700 mb-1">বাসার বিবরণ</label>
-            <textarea id="house-description" rows="4" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500"></textarea>
-          </div>
-          <div class="text-center">
-            <button type="submit" class="submit-btn text-white font-semibold px-8 py-3 rounded-full hover:bg-green-600 transition">
-              <i class="fas fa-paper-plane"></i> তালিকাভুক্ত করুন
-            </button>
-          </div>
-        </form>
-        <div id="form-message" class="mt-4 text-center hidden"></div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
-    <p class="text-sm">&copy; ২০২৫ বাসা ভাড়া বোর্ড — সকল অধিকার সংরক্ষিত</p>
-  </footer>
-
-  <script>
-    // Sample data for house listings
-    const houseListings = [
-      { id: 1, location: 'চরপাথরঘাটা', rooms: 2, rent: 8000, address: 'চরপাথরঘাটা, নতুন বাজার, রোড নং-৩', description: '২ বেড, ২ বাথ, ড্রয়িং ও ডাইনিং। নিরিবিলি পরিবেশ।', phone: '01812-111111' },
-      { id: 2, location: 'শিকলবাহা', rooms: 3, rent: 12000, address: 'শিকলবাহা, কলেজ রোড, বাসা নং-২০', description: '৩ বেড, ৩ বাথ, বারান্দা সহ সম্পূর্ণ নতুন ফ্ল্যাট।', phone: '01711-222222' },
-      { id: 3, location: 'বড়উঠান', rooms: 1, rent: 5000, address: 'বড়উঠান, বাজার সংলগ্ন, রোড নং-৫', description: 'ছোট পরিবারের জন্য ১ বেডরুমের বাসা, কিচেন ও বাথ সংযুক্ত।', phone: '01618-333333' },
-      { id: 4, location: 'জুলধা', rooms: 4, rent: 15000, address: 'জুলধা, স্কুল রোড', description: 'সম্পূর্ণ ফ্যামিলি বাসা, পর্যাপ্ত আলো বাতাস। বড় পরিবারের জন্য উপযোগী।', phone: '01919-444444' },
-      { id: 5, location: 'চরলক্ষ্যা', rooms: 2, rent: 9500, address: 'চরলক্ষ্যা, নদীর পাড়, রোড নং-১', description: '২ বেড, ২ বাথ, ব্যালকনি সহ সুন্দর ভিউ।', phone: '01313-555555' },
-    ];
-
-    const listingGrid = document.getElementById('listing-grid');
-    const locationFilter = document.getElementById('location-filter');
-    const roomsFilter = document.getElementById('rooms-filter');
-    const searchInput = document.getElementById('search-input');
-    const filterBtn = document.getElementById('filter-btn');
-    const noResults = document.getElementById('no-results');
-
-    function renderListings(data) {
-      listingGrid.innerHTML = '';
-      if (data.length === 0) {
-        noResults.classList.remove('hidden');
-        return;
-      }
-      noResults.classList.add('hidden');
-      data.forEach(listing => {
-        const card = document.createElement('div');
-        card.className = 'card bg-white p-6 rounded-lg flex flex-col items-center text-center';
-        card.innerHTML = `
-          <h3 class="text-2xl font-bold text-blue-700 mb-2">${listing.location}</h3>
-          <p class="text-sm text-gray-500 mb-2">${listing.address}</p>
-          <div class="bg-gray-200 w-full h-40 rounded-md mb-4 flex items-center justify-center text-gray-400">
-            <i class="fas fa-home text-4xl"></i>
-          </div>
-          <p class="text-lg font-semibold text-green-600 mb-2">ভাড়া: ${listing.rent} টাকা</p>
-          <ul class="text-left text-sm text-gray-600 w-full space-y-1 mb-4">
-            <li><i class="fas fa-bed text-blue-400 mr-2"></i> বেডরুম: ${listing.rooms}টি</li>
-            <li><i class="fas fa-info-circle text-blue-400 mr-2"></i> বিবরণ: ${listing.description}</li>
-          </ul>
-          <a href="tel:${listing.phone}" class="bg-blue-500 text-white font-semibold px-6 py-2 rounded-full hover:bg-blue-600 transition flex items-center gap-2">
-            <i class="fas fa-phone-alt"></i> যোগাযোগ করুন
-          </a>
-        `;
-        listingGrid.appendChild(card);
-      });
-    }
-
-    function filterAndRender() {
-      const selectedLocation = locationFilter.value;
-      const selectedRooms = roomsFilter.value;
-      const searchQuery = searchInput.value.toLowerCase();
-
-      const filteredData = houseListings.filter(listing => {
-        const matchesLocation = selectedLocation === 'all' || listing.location === selectedLocation;
-        const matchesRooms = selectedRooms === 'all' || 
-                             (selectedRooms === '4+' ? listing.rooms >= 4 : listing.rooms.toString() === selectedRooms);
-        const matchesSearch = listing.address.toLowerCase().includes(searchQuery) || 
-                              listing.description.toLowerCase().includes(searchQuery);
-
-        return matchesLocation && matchesRooms && matchesSearch;
-      });
-      renderListings(filteredData);
-    }
+<body class="bg-gray-50 text-slate-800 min-h-screen flex flex-col">
     
-    // Initial render and event listeners
-    renderListings(houseListings);
-    filterBtn.addEventListener('click', filterAndRender);
-    locationFilter.addEventListener('change', filterAndRender);
-    roomsFilter.addEventListener('change', filterAndRender);
+    <header class="header-bg text-white shadow-xl sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex flex-col sm:flex-row justify-between items-center">
+            <h1 class="text-2xl font-bold flex items-center gap-2">🏘️ বাসা ভাড়া বোর্ড</h1>
+            <nav class="mt-4 sm:mt-0">
+                <ul class="flex flex-wrap justify-center gap-6 text-sm font-medium">
+                    <li><a href="#rent-house" class="hover:text-yellow-300 transition">বাসা খুঁজুন</a></li>
+                    <li><a href="#list-house" class="hover:text-yellow-300 transition">বাসা ভাড়া দিন</a></li>
+                    <li><a href="index.html" class="hover:text-yellow-300 transition"><i class="fas fa-arrow-left"></i> হোমে ফিরুন</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    // Form submission logic (for demonstration)
-    const form = document.getElementById('listing-form');
-    const formMessage = document.getElementById('form-message');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      formMessage.classList.remove('hidden');
-      formMessage.innerHTML = `<p class="text-green-500 font-semibold"><i class="fas fa-check-circle"></i> আপনার তালিকা সফলভাবে জমা হয়েছে।</p>`;
-      
-      form.reset();
-      setTimeout(() => {
-        formMessage.classList.add('hidden');
-      }, 5000);
-    });
-  </script>
+    <main class="flex-1 container mx-auto px-6 py-10">
+
+        <section id="rent-house" class="mb-12 pt-10">
+            <h2 class="text-4xl font-extrabold text-center section-title text-gray-800">বাসা খুঁজুন — উপলব্ধ তালিকা</h2>
+            <p class="text-center text-slate-600 max-w-3xl mx-auto mb-8">আপনার পছন্দের এলাকা, বেডরুম ও বাজেট অনুযায়ী বিস্তারিত সুবিধা সমেত বাসা খুঁজে নিন।</p>
+            
+            <div class="listing-card bg-white p-6 rounded-lg mb-8 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-4">
+                
+                <div class="w-full md:w-auto">
+                    <label for="location-filter" class="block text-xs font-semibold text-gray-700 mb-1">এলাকা</label>
+                    <select id="location-filter" class="w-full md:w-40 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="all">সকল এলাকা</option>
+                        <option value="শিকলবাহা">শিকলবাহা</option>
+                        <option value="বড়উঠান">বড়উঠান</option>
+                        <option value="চরপাথরঘাটা">চরপাথরঘাটা</option>
+                        <option value="জুলধা">জুলধা</option>
+                        <option value="চরলক্ষ্যা">চরলক্ষ্যা</option>
+                    </select>
+                </div>
+                
+                <div class="w-full md:w-auto">
+                    <label for="type-filter" class="block text-xs font-semibold text-gray-700 mb-1">বাসার ধরণ</label>
+                    <select id="type-filter" class="w-full md:w-36 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="all">সব ধরণ</option>
+                        <option value="ফ্ল্যাট">ফ্ল্যাট</option>
+                        <option value="সাবলেট">সাবলেট</option>
+                        <option value="সিঙ্গেল রুম">সিঙ্গেল রুম</option>
+                    </select>
+                </div>
+
+                <div class="w-full md:w-auto">
+                    <label for="rooms-filter" class="block text-xs font-semibold text-gray-700 mb-1">বেডরুম</label>
+                    <select id="rooms-filter" class="w-full md:w-32 px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="all">সব</option>
+                        <option value="1">১ বেড</option>
+                        <option value="2">২ বেড</option>
+                        <option value="3">৩ বেড</option>
+                        <option value="4+">৪+</option>
+                    </select>
+                </div>
+
+                <div class="flex-grow w-full md:w-auto">
+                    <label for="search-input" class="block text-xs font-semibold text-gray-700 mb-1">ঠিকানা/বিবরণ খুঁজুন</label>
+                    <input type="text" id="search-input" placeholder="বাজার, রোড বা বিবরণ" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div class="w-full md:w-auto pt-4 md:pt-0">
+                    <button id="filter-btn" class="w-full md:w-auto bg-blue-600 text-white px-6 py-2.5 rounded-md hover:bg-blue-700 transition font-semibold">
+                        <i class="fas fa-search"></i> খুঁজুন
+                    </button>
+                </div>
+            </div>
+
+            <div id="listing-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            </div>
+            <div id="no-results" class="hidden text-center py-12 text-2xl text-red-500 font-semibold bg-white rounded-xl mt-8 shadow-md max-w-5xl mx-auto">
+                <i class="fas fa-exclamation-triangle mr-2"></i> দুঃখিত! আপনার পছন্দের কোনো বাসা খুঁজে পাওয়া যায়নি।
+            </div>
+        </section>
+
+        <section id="list-house" class="mb-12 pt-10">
+            <h2 class="text-4xl font-extrabold text-center section-title text-gray-800">আপনার বাসা ভাড়া দিন</h2>
+            <p class="text-center text-slate-600 max-w-2xl mx-auto mb-8">আপনার বাসার সমস্ত বিবরণ সঠিকভাবে পূরণ করে তালিকাভুক্ত করুন।</p>
+
+            <div class="listing-card bg-white p-6 rounded-lg max-w-3xl mx-auto">
+                <form id="listing-form" class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label for="lister-name" class="block text-sm font-semibold text-gray-700 mb-1">আপনার নাম</label>
+                            <input type="text" id="lister-name" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="lister-phone" class="block text-sm font-semibold text-gray-700 mb-1">যোগাযোগের ফোন নম্বর</label>
+                            <input type="tel" id="lister-phone" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="house-address" class="block text-sm font-semibold text-gray-700 mb-1">বাসার সম্পূর্ণ ঠিকানা</label>
+                        <input type="text" id="house-address" required placeholder="উদাহরণ: চরপাথরঘাটা, নতুন বাজার, হাউস নং-১০" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div>
+                            <label for="house-type" class="block text-sm font-semibold text-gray-700 mb-1">বাসার ধরণ</label>
+                            <select id="house-type" required class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                                <option value="">বাছাই করুন</option>
+                                <option value="ফ্ল্যাট">ফ্ল্যাট</option>
+                                <option value="সাবলেট">সাবলেট</option>
+                                <option value="সিঙ্গেল রুম">সিঙ্গেল রুম</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="house-rooms" class="block text-sm font-semibold text-gray-700 mb-1">বেডরুম (সংখ্যা)</label>
+                            <input type="number" id="house-rooms" required min="1" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                         <div>
+                            <label for="house-bathrooms" class="block text-sm font-semibold text-gray-700 mb-1">বাথরুম (সংখ্যা)</label>
+                            <input type="number" id="house-bathrooms" required min="1" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                        <div>
+                            <label for="house-rent" class="block text-sm font-semibold text-gray-700 mb-1">ভাড়া (টাকা)</label>
+                            <input type="number" id="house-rent" required min="1000" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500">
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-3 gap-4">
+                         <div class="flex items-center">
+                            <input id="has-kitchen" type="checkbox" checked class="h-4 w-4 text-amber-600 border-gray-300 rounded focus:ring-amber-500">
+                            <label for="has-kitchen" class="ml-2 block text-sm font-medium text-gray-700">কিচেন আছে</label>
+                        </div>
+                         <div class="flex items-center">
+                            <input id="has-drawing" type="checkbox" class="h-4 w-4 text-amber-600 border-gray-300 rounded focus:ring-amber-500">
+                            <label for="has-drawing" class="ml-2 block text-sm font-medium text-gray-700">ড্রয়িং রুম আছে</label>
+                        </div>
+                         <div class="flex items-center">
+                            <input id="has-dining" type="checkbox" class="h-4 w-4 text-amber-600 border-gray-300 rounded focus:ring-amber-500">
+                            <label for="has-dining" class="ml-2 block text-sm font-medium text-gray-700">ডাইনিং রুম আছে</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="house-description" class="block text-sm font-semibold text-gray-700 mb-1">বাসার অন্যান্য বিবরণ (যেমন: গ্যাস, বিদ্যুৎ, পানি)</label>
+                        <textarea id="house-description" rows="3" placeholder="বাসার গুরুত্বপূর্ণ সুবিধা ও শর্তাদি লিখুন" class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-amber-500"></textarea>
+                    </div>
+                    
+                    <div class="text-center pt-4">
+                        <button type="submit" class="submit-btn text-white font-semibold px-8 py-3 rounded-full hover:shadow-xl transition">
+                            <i class="fas fa-paper-plane mr-2"></i> তালিকাভুক্ত করুন
+                        </button>
+                    </div>
+                </form>
+                <div id="form-message" class="mt-4 text-center hidden"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-800 text-white py-6 text-center mt-auto">
+        <p class="text-sm">&copy; ২০২৫ বাসা ভাড়া বোর্ড — সকল অধিকার সংরক্ষিত</p>
+    </footer>
+
+    <script>
+        // Sample data with new comprehensive fields
+        const houseListings = [
+            { id: 1, location: 'চরপাথরঘাটা', houseType: 'ফ্ল্যাট', rooms: 2, bathrooms: 2, hasKitchen: true, hasDrawing: true, hasDining: false, rent: 8500, address: 'চরপাথরঘাটা, নতুন বাজার, রোড নং-৩, ৩য় তলা', description: '২ বেড, ২ বাথ, ড্রয়িং। নিরিবিলি পরিবেশ, সম্পূর্ণ টাইলস করা।', phone: '01812-111111' },
+            { id: 2, location: 'শিকলবাহা', houseType: 'ফ্ল্যাট', rooms: 3, bathrooms: 3, hasKitchen: true, hasDrawing: true, hasDining: true, rent: 14000, address: 'শিকলবাহা, কলেজ রোড, বাসা নং-২০, ২য় তলা', description: '৩ বেড, ৩ বাথ, বারান্দা সহ সম্পূর্ণ নতুন, আধুনিক সুবিধা।', phone: '01711-222222' },
+            { id: 3, location: 'বড়উঠান', houseType: 'সিঙ্গেল রুম', rooms: 1, bathrooms: 1, hasKitchen: false, hasDrawing: false, hasDining: false, rent: 4500, address: 'বড়উঠান, বাজার সংলগ্ন, রোড নং-৫', description: 'ছোট পরিবারের জন্য ১ বেডরুমের বাসা, কিচেন শেয়ার করতে হবে।', phone: '01618-333333' },
+            { id: 4, location: 'জুলধা', houseType: 'ফ্ল্যাট', rooms: 4, bathrooms: 2, hasKitchen: true, hasDrawing: true, hasDining: true, rent: 18000, address: 'জুলধা, স্কুল রোড, ৫ তলার ভবন', description: 'বড় ফ্যামিলি বাসা, পর্যাপ্ত আলো বাতাস। স্কুল ও বাজারের কাছে।', phone: '01919-444444' },
+            { id: 5, location: 'চরলক্ষ্যা', houseType: 'সাবলেট', rooms: 1, bathrooms: 1, hasKitchen: true, hasDrawing: false, hasDining: false, rent: 6000, address: 'চরলক্ষ্যা, নদীর পাড়, রোড নং-১', description: 'ছাত্র বা ছোট চাকুরিজীবীর জন্য সাবলেট, সকল বিল সহ।', phone: '01313-555555' },
+        ];
+
+        const listingGrid = document.getElementById('listing-grid');
+        const locationFilter = document.getElementById('location-filter');
+        const typeFilter = document.getElementById('type-filter');
+        const roomsFilter = document.getElementById('rooms-filter');
+        const searchInput = document.getElementById('search-input');
+        const filterBtn = document.getElementById('filter-btn');
+        const noResults = document.getElementById('no-results');
+
+        // Helper function for rendering feature tags
+        function getFeatureTag(has, icon, label) {
+            return has ? `<span class="bg-teal-100 text-teal-700 text-xs font-medium px-2 py-1 rounded-full"><i class="${icon} mr-1"></i> ${label}</span>` : '';
+        }
+
+        function renderListings(data) {
+            listingGrid.innerHTML = '';
+            if (data.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            }
+            noResults.classList.add('hidden');
+
+            data.forEach(listing => {
+                const featureTags = `
+                    ${getFeatureTag(listing.hasKitchen, 'fas fa-utensils', 'কিচেন')}
+                    ${getFeatureTag(listing.hasDrawing, 'fas fa-couch', 'ড্রয়িং')}
+                    ${getFeatureTag(listing.hasDining, 'fas fa-chair', 'ডাইনিং')}
+                `;
+
+                const card = document.createElement('div');
+                card.className = 'listing-card p-6 flex flex-col justify-between';
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-3 border-b pb-2">
+                            <h3 class="text-xl font-bold text-gray-800">${listing.location}</h3>
+                            <span class="text-sm font-semibold bg-blue-100 text-blue-700 px-3 py-1 rounded-full">${listing.houseType}</span>
+                        </div>
+                        
+                        <p class="text-base font-medium text-amber-600 mb-2"><i class="fas fa-tag mr-1"></i> ভাড়া: ${listing.rent} টাকা</p>
+                        <p class="text-sm text-gray-600 mb-3"><i class="fas fa-map-marker-alt mr-1"></i> ঠিকানা: ${listing.address}</p>
+
+                        <div class="flex flex-wrap gap-x-4 gap-y-2 mb-4 text-sm font-medium">
+                            <span class="text-gray-700"><i class="fas fa-bed mr-1 text-red-500"></i> বেডরুম: <strong>${listing.rooms}</strong>টি</span>
+                            <span class="text-gray-700"><i class="fas fa-bath mr-1 text-blue-500"></i> বাথরুম: <strong>${listing.bathrooms}</strong>টি</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            ${featureTags}
+                        </div>
+
+                        <p class="text-xs italic text-gray-500 mt-2">${listing.description}</p>
+                    </div>
+
+                    <a href="tel:${listing.phone}" class="bg-green-600 text-white font-semibold px-6 py-2.5 rounded-full hover:bg-green-700 transition flex items-center justify-center gap-2 mt-4">
+                        <i class="fas fa-phone-alt"></i> যোগাযোগ করুন: ${listing.phone}
+                    </a>
+                `;
+                listingGrid.appendChild(card);
+            });
+        }
+
+        function filterAndRender(e) {
+            if (e) e.preventDefault();
+            
+            const selectedLocation = locationFilter.value;
+            const selectedType = typeFilter.value;
+            const selectedRooms = roomsFilter.value;
+            const searchQuery = searchInput.value.toLowerCase();
+
+            const filteredData = houseListings.filter(listing => {
+                const matchesLocation = selectedLocation === 'all' || listing.location === selectedLocation;
+                const matchesType = selectedType === 'all' || listing.houseType === selectedType;
+                
+                const matchesRooms = selectedRooms === 'all' || 
+                                     (selectedRooms === '4+' ? listing.rooms >= 4 : listing.rooms.toString() === selectedRooms);
+                                     
+                const matchesSearch = listing.address.toLowerCase().includes(searchQuery) || 
+                                     listing.description.toLowerCase().includes(searchQuery);
+
+                return matchesLocation && matchesType && matchesRooms && matchesSearch;
+            });
+            renderListings(filteredData);
+        }
+        
+        // Initial render and event listeners
+        renderListings(houseListings);
+        filterBtn.addEventListener('click', filterAndRender);
+        locationFilter.addEventListener('change', filterAndRender);
+        typeFilter.addEventListener('change', filterAndRender); // New filter listener
+        roomsFilter.addEventListener('change', filterAndRender);
+
+        // Form submission logic (for demonstration)
+        const form = document.getElementById('listing-form');
+        const formMessage = document.getElementById('form-message');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            formMessage.classList.remove('hidden');
+            formMessage.innerHTML = `<p class="text-green-500 font-semibold text-lg"><i class="fas fa-check-circle mr-2"></i> আপনার বাসার তালিকা সফলভাবে জমা হয়েছে।</p>`;
+            
+            // In a real application, you would send this data to a server.
+            console.log('Form Submitted!', {
+                name: document.getElementById('lister-name').value,
+                phone: document.getElementById('lister-phone').value,
+                address: document.getElementById('house-address').value,
+                type: document.getElementById('house-type').value,
+                rent: document.getElementById('house-rent').value,
+                rooms: document.getElementById('house-rooms').value,
+                bathrooms: document.getElementById('house-bathrooms').value,
+                hasKitchen: document.getElementById('has-kitchen').checked,
+                hasDrawing: document.getElementById('has-drawing').checked,
+                hasDining: document.getElementById('has-dining').checked,
+                description: document.getElementById('house-description').value,
+            });
+            
+            form.reset();
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 7000);
+        });
+    </script>
 </body>
 </html>
