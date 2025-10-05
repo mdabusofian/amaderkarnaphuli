@@ -69,7 +69,7 @@
         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
           <i class="fas fa-search text-gray-400"></i>
         </div>
-        <input type="text" id="searchQuery" placeholder="অফিসের নাম বা প্রধানের নাম দিয়ে খুঁজুন..." class="search-input w-full pl-10 pr-4 py-2 text-gray-700">
+        <input type="text" id="searchQuery" oninput="filterAndRender()" placeholder="অফিসের নাম বা প্রধানের নাম দিয়ে খুঁজুন..." class="search-input w-full pl-10 pr-4 py-2 text-gray-700">
       </div>
     </div>
 
@@ -94,41 +94,32 @@
         phone: '+8801733-334342',
         email: 'unokarnafuli@mopa.gov.bd', 
         website: 'https://karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/d9ae2fd5-7ae4-4447-a687-11f21ef67b03//689/848/333/6898483330a59897237564.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/d9ae2fd5-7ae4-4447-a687-11f21ef67b03//689/848/333/6898483330a59897237564.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
-  { 
+      { 
         name: 'উপজেলা ভূমি অফিস, কর্ণফুলী', 
         head: 'জনাব মোঃ আল আমিন হোসেন (সহকারী কমিশনার (ভূমি))', 
         phone: '০১৭৩৭৯৬১৩১৩',
         email: 'aclandkarnafuli@gmail.com', 
         website: 'http://acl.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/b3b96670-13d1-4bbf-b8ca-4bb5603fac9b//68a/ab5/b3a/68aab5b3a15bc191038295.jpeg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/b3b96670-13d1-4bbf-b8ca-4bb5603fac9b//68a/ab5/b3a/68aab5b3a15bc191038295.jpeg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
-    { 
+      { 
         name: 'উপজেলা নির্বাচন অফিস', 
-        head: 'জনাব মোঃ সাইফুল আলম (উপজেলা নির্বাচন অফিসার,অতিঃ দায়িত্ব)', 
+        head: 'জনাব মোঃ সাইফুল আলম (উপজেলা নির্বাচন অফিসার,অতিঃ দায়িত্ব)', 
         phone: '০১৮১২৭৫৬৮৪১', 
         email: 'ueo.karnafuly@gmail.com', 
         website: 'http://ec.karnafuli.chittagong.gov.bd/',
         imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/16f9775d-6ed8-484b-9f9c-ebc84fa223a6//686/e2b/9e9/686e2b9e98f5b805496498.jpg' // এই ক্ষেত্রে কোনো ছবি নেই
       },
-
-      
-
       { 
         name: 'উপজেলা স্বাস্থ্য কমপ্লেক্স', 
         head: 'ডাঃ মোছাম্মৎ জেবুন্নেসা (উপজেলা স্বাস্থ্য ও প.প. কর্মকর্তা)', 
         phone: '০১৭০১২৪৮৪১৭', 
         email: 'karnaphuli@uhfpo.dghs.gov.bd', 
         website: 'http://health.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/6a2c91b3-fb7b-4590-91da-72040fd55f5a//68d/ccc/6da/68dccc6da5d2e274214483.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/6a2c91b3-fb7b-4590-91da-72040fd55f5a//68d/ccc/6da/68dccc6da5d2e274214483.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
       { 
         name: 'উপজেলা মাধ্যমিক শিক্ষা অফিস', 
         head: 'জনাব বাবুল চন্দ্র নাথ (উপজেলা মাধ্যমিক শিক্ষা অফিসার)', 
@@ -137,21 +128,14 @@
         website: 'http://dshe.karnafuli.chittagong.gov.bd/',
         imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/4bd24d0e-5797-4198-9b75-e1adb92e08c8//646/48b/7e4/64648b7e43bb5309221272.jpg' // এই ক্ষেত্রে কোনো ছবি নেই
       },
-
-উপজেলা যুব উন্নয়ন অফিস
-
- { 
+      { 
         name: 'উপজেলা শিক্ষা অফিসার,কর্ণফুলী', 
         head: 'জনাব দ্বিজেন ধর (উপজেলা শিক্ষা অফিসার (ভারপ্রাপ্ত)', 
         phone: '০১৮১৬৫৫৫৩৬৬',
         email: 'dijendharaueo@gmail.com', 
         website: 'http://dpe.karnafuli.chittagong.gov.bd/',
-        imageUrl: '#' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: '' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে (লিংক ঠিক না থাকায় খালি রাখা হলো)
       },
-
-
-
-
       { 
         name: 'উপজেলা সমাজসেবা অফিস', 
         head: 'জনাব সবুর আলী (উপজেলা সমাজসেবা অফিসার)', 
@@ -160,19 +144,14 @@
         website: 'http://dss.karnafuli.chittagong.gov.bd/',
         imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/1d8ad5e1-66c1-4db2-a5d4-85b4958c4164//659/050/155/65905015549b5919218890.jpg' // এই ক্ষেত্রে কোনো ছবি নেই
       },
-
-
- { 
-        name: 'উপজেলা ফায়ার সার্ভিস ও সিভিল ডিফেন্স অফিস,কর্ণফুলী', 
-        head: 'জনাব মো. ইসমাইল হোসেন (সিনিয়র স্টেশন অফিসার (ভারপ্রাপ্ত)', 
+      { 
+        name: 'উপজেলা ফায়ার সার্ভিস ও সিভিল ডিফেন্স অফিস,কর্ণফুলী', 
+        head: 'জনাব মো. ইসমাইল হোসেন (সিনিয়র স্টেশন অফিসার (ভারপ্রাপ্ত)', 
         phone: '০১৯০১০২১৫৬৯',
         email: 'mkarnaphulifire@gmail.com', 
         website: 'http://fireservice.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/84435959-3351-43f2-a645-ec451c7839c9//661/ccd/bf7/661ccdbf7d2aa543264340.jpeg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/84435959-3351-43f2-a645-ec451c7839c9//661/ccd/bf7/661ccdbf7d2aa543264340.jpeg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
-
       { 
         name: 'কর্ণফুলী থানা', 
         head: 'জনাব মোহাম্মদ জহির হোসেন (পিপিএম বার)', 
@@ -181,91 +160,70 @@
         website: 'http://police.karnafuli.chittagong.gov.bd/',
         imageUrl: '' // এই ক্ষেত্রে কোনো ছবি নেই
       },
-
- { 
+      { 
         name: 'উপজেলা আনসার ও ভিডিপি, কর্ণফুলী', 
         head: 'জনাব মোঃ আরাফাত হোসেন (উপজেলা আনসার ও ভিডিপি কর্মকর্তা)', 
         phone: '০১৮৪৩১৪৪২৬৫',
         email: 'cuarafat@gmail.com', 
         website: 'http://ansarvdp.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/897c469f-2f75-4ece-98b1-cc6821f67b24//670/e03/b8b/670e03b8b630f848924128.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/897c469f-2f75-4ece-98b1-cc6821f67b24//670/e03/b8b/670e03b8b630f848924128.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
-  { 
+      { 
         name: 'চট্টগ্রাম পল্লী বিদ্যুৎ সমিতি-০১', 
-        head: ' প্রকৌঃ দীলিপ চন্দ্র চৌধুরী(সিনিয়র জেনারেল ম্যানেজার)', 
+        head: ' প্রকৌঃ দীলিপ চন্দ্র চৌধুরী(সিনিয়র জেনারেল ম্যানেজার)', 
         phone: '০১৭৬৯৪০০০১৮', 
         email: 'ctgpbs1@gmail.com	', 
         website: 'https://pbs1.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/f3083fb9-810a-4103-9811-177e6758feba//64b/4de/d0e/64b4ded0e1933674829596.jpeg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/f3083fb9-810a-4103-9811-177e6758feba//64b/4de/d0e/64b4ded0e1933674829596.jpeg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
-    { 
+      { 
         name: 'উপজেলা প্রকৌশলী অফিস', 
         head: 'মোঃ জাহেদুল আলম চৌধুরী (উপজেলা প্রকৌশলী)', 
         phone: '+88017xxxxxxxxx', 
         email: 'ue.karnafuli@lged.gov.bd', 
         website: 'http://lged.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/f9fe95fc-0203-49ed-adb7-9c8f179ec3d3//63e/d23/3d8/63ed233d85703456113149.jpg // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/f9fe95fc-0203-49ed-adb7-9c8f179ec3d3//63e/d23/3d8/63ed233d85703456113149.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-    { 
+      { 
         name: 'উপজেলা কৃষি অফিস', 
         head: 'কৃষিবিদ শারমিন সুলতানা(উপজেলা কৃষি কর্মকর্তা)', 
         phone: '০১৭০৬৭৯৫৩৫৩', 
         email: 'karnafullyuao.ctg.22@gmail.com', 
         website: 'http://dae.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=1780&auto=format&fit=crop' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
-{ 
+      { 
         name: 'উপজেলা খাদ্য অফিস', 
-        head: 'সামছুন্নাহার স্বর্ণা  উপজেলা খাদ্য নিয়ন্ত্রক)', 
+        head: 'সামছুন্নাহার স্বর্ণা (উপজেলা খাদ্য নিয়ন্ত্রক)', 
         phone: '০১৭১৮-০৮৪৬০৬', 
         email: 'ucf.kernafulictg@gmail.com', 
         website: 'http://food.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/b86e321d-7016-4ced-bbc5-a67a8e3546e5//650/697/8b5/6506978b5ab1e323804819.jpeg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/b86e321d-7016-4ced-bbc5-a67a8e3546e5//650/697/8b5/6506978b5ab1e323804819.jpeg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
-{ 
+      { 
         name: 'উপজেলা প্রাণিসম্পদ দপ্তর ও ভেটেরিনারি হাসপাতাল, কর্ণফুলী, চট্টগ্রাম', 
         head: ' জনাব ডা. মো. রাকিবুল ইসলাম (উপজেলা প্রাণিসম্পদ অফিসার )', 
         phone: '০১৯২২৯৩৫১১৫', 
         email: 'dlskarnafulictg@gmail.com', 
         website: 'http://dls.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/94519ce4-9afd-4909-878d-fb30c5914b29//66f/8f9/5f8/66f8f95f8f47b130297702.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/94519ce4-9afd-4909-878d-fb30c5914b29//66f/8f9/5f8/66f8f95f8f47b130297702.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-{ 
+      { 
         name: 'উপজেলা মৎস অফিস', 
         head: ' জনাব মোঃ আব্দুল আলীম (উপজেলা মৎস্য অফিসার)', 
         phone: '০১৩৩৪৯১১৬৭১', 
         email: 'ufokarnafuli@fisheries.gov.bd', 
         website: 'http://fisheries.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/2b5f514d-539c-4367-939d-0830674d3f4d//67b/462/bc0/67b462bc00fe5353710203.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/2b5f514d-539c-4367-939d-0830674d3f4d//67b/462/bc0/67b462bc00fe5353710203.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
       },
-
-
-
-
-
- { 
-        name: 'উপজেলা যুব উন্নয়ন অফিস,কর্ণফুলী', 
-        head: 'জনাব সাবের আহাম্মদ (উপজেলা যুব উন্নয়ন কর্মকর্তা)', 
+      { 
+        name: 'উপজেলা যুব উন্নয়ন অফিস,কর্ণফুলী', 
+        head: 'জনাব সাবের আহাম্মদ (উপজেলা যুব উন্নয়ন কর্মকর্তা)', 
         phone: '০১৮১৬০১৫৩০২',
         email: 'haberahmed196702@gmail.com', 
         website: 'http://youth.karnafuli.chittagong.gov.bd/',
-        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/32af8511-d577-45f3-a126-49fc64f650d0//687/4bd/6ea/6874bd6eac7e8983814399.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
-      },
-
-
-
-
-
+        imageUrl: 'https://file-chittagong.portal.gov.bd/uploads/32af8511-d577-45f3-a126-49fc64f650d0//687/4bd/6ea/6874bd6eac7e8983814399.jpg' // উদাহরণস্বরূপ একটি ছবি যুক্ত করা হয়েছে
+      }
       // আপনার উপজেলার তথ্য এখানে যুক্ত করুন
     ];
 
@@ -284,14 +242,14 @@
           card.className = 'card-gradient rounded-xl shadow-md p-6 border border-blue-100 text-center transition-all duration-300 card-hover';
           card.innerHTML = `
             <div class="profile-img-container">
-                ${office.imageUrl ? `<img src="${office.imageUrl}" alt="${office.head}" class="profile-img">` : `<i class="fas fa-user-circle profile-icon"></i>`}
+                ${office.imageUrl && office.imageUrl !== '#' ? `<img src="${office.imageUrl}" alt="${office.head}" class="profile-img">` : `<i class="fas fa-user-circle profile-icon"></i>`}
             </div>
             <h3 class="text-xl font-bold text-gray-800 mb-2">${office.name}</h3>
             <p class="text-md font-medium text-slate-700 mb-4">${office.head}</p>
             <div class="space-y-3 text-sm text-gray-600">
               ${office.phone ? `<p><i class="fas fa-phone-alt text-gray-500 mr-2"></i> <a href="tel:${office.phone}" class="hover:underline text-blue-600">${office.phone}</a></p>` : ''}
               ${office.email ? `<p><i class="fas fa-envelope text-gray-500 mr-2"></i> <a href="mailto:${office.email}" class="hover:underline text-blue-600">${office.email}</a></p>` : ''}
-              ${office.website ? `<p><i class="fas fa-globe text-gray-500 mr-2"></i> <a href="${office.website}" target="_blank" class="hover:underline text-blue-600">${office.website}</a></p>` : ''}
+              ${office.website ? `<p><i class="fas fa-globe text-gray-500 mr-2"></i> <a href="${office.website}" target="_blank" class="hover:underline text-blue-600">${office.website.replace(/(^\w+:|^)\/\//, '').replace(/\/$/, '')}</a></p>` : ''}
             </div>
             <div class="mt-6 text-center">
               ${office.website ? `<a href="${office.website}" target="_blank" class="inline-block bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition-colors duration-300">
